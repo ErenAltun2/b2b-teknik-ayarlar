@@ -1,0 +1,4031 @@
+{
+  "version": 1,
+  "source": "https://platform.b2bstore.com/DealerSystemSetting (store1, 2026-11-17)",
+  "groups": [
+    {
+      "key": "genel",
+      "title": "Genel",
+      "description": "Site durumu, bayi bilgileri ve ana sayfa davranışı"
+    },
+    {
+      "key": "tasarim",
+      "title": "Görünüm & Tasarım",
+      "description": "Logo, renkler, tema ve sayfa yerleşimi"
+    },
+    {
+      "key": "menu",
+      "title": "Menü Gösterimi",
+      "description": "B2B portalında hangi menülerin görüneceği"
+    },
+    {
+      "key": "urun-gosterim",
+      "title": "Ürün Listeleme & Stok",
+      "description": "Ürün listesinde fiyat, stok ve sıralama gösterimi"
+    },
+    {
+      "key": "urun-detay",
+      "title": "Ürün Detay",
+      "description": "Ürün kartı ve detay sayfasında gösterilecek alanlar"
+    },
+    {
+      "key": "arama",
+      "title": "Arama & Filtre",
+      "description": "Ürün arama davranışı ve filtreler"
+    },
+    {
+      "key": "sepet",
+      "title": "Sepet & Sipariş",
+      "description": "Sepet limitleri ve sipariş adımları"
+    },
+    {
+      "key": "odeme",
+      "title": "Ödeme & Cari Hesap",
+      "description": "Online ödeme, komisyon ve cari hesap ekranları"
+    },
+    {
+      "key": "fiyat",
+      "title": "Fiyat & Döviz",
+      "description": "Kur, para birimi ve indirim ayarları"
+    },
+    {
+      "key": "basvuru",
+      "title": "Başvuru Formu & Giriş",
+      "description": "Yeni bayi başvuru formu alanları ve giriş ekranı"
+    },
+    {
+      "key": "entegrasyon",
+      "title": "Entegrasyon & Takip Kodları",
+      "description": "ERP entegrasyonu, şifreleme ve analitik kodları"
+    },
+    {
+      "key": "admin",
+      "title": "Yönetim (Admin)",
+      "description": "Yönetim paneli ve gelişmiş iş kuralları"
+    }
+  ],
+  "settings": [
+    {
+      "key": "SiteStatus",
+      "group": "genel",
+      "label": "Site durumu",
+      "control": "select",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "1",
+          "label": "Aktif"
+        },
+        {
+          "value": "0",
+          "label": "Pasif"
+        }
+      ],
+      "description": "Pasif yapıldığında B2B portalına bayi girişi kapanır.",
+      "legacyControlId": "ddlSiteStatus"
+    },
+    {
+      "key": "DealerName",
+      "group": "genel",
+      "label": "Bayi adı",
+      "control": "text",
+      "sqlType": "nvarchar",
+      "maxLength": 450,
+      "bitwise": false,
+      "legacyControlId": "TxtDealerName"
+    },
+    {
+      "key": "DealerPhoneNumber",
+      "group": "genel",
+      "label": "Bayi telefonu",
+      "control": "text",
+      "sqlType": "nvarchar",
+      "maxLength": 450,
+      "bitwise": false,
+      "legacyControlId": "txtBayiTelefon"
+    },
+    {
+      "key": "DealerAdress",
+      "group": "genel",
+      "label": "Bayi adresi",
+      "control": "textarea",
+      "sqlType": "nvarchar",
+      "maxLength": 450,
+      "bitwise": false,
+      "legacyControlId": "txtBayiAdres"
+    },
+    {
+      "key": "DealerWebAdress",
+      "group": "genel",
+      "label": "Bayi web adresi",
+      "control": "text",
+      "sqlType": "nvarchar",
+      "maxLength": 450,
+      "bitwise": false,
+      "legacyControlId": "txtBayiWebAdres",
+      "placeholder": "https://"
+    },
+    {
+      "key": "EInvoiceNo",
+      "group": "genel",
+      "label": "E-Fatura numarası",
+      "control": "text",
+      "sqlType": "nvarchar",
+      "maxLength": 100,
+      "bitwise": false,
+      "legacyControlId": "txtEInvoiceNo"
+    },
+    {
+      "key": "HomeStyle",
+      "group": "genel",
+      "label": "Giriş sonrası açılacak sayfa",
+      "control": "select",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "0",
+          "label": "Varsayılan"
+        },
+        {
+          "value": "1",
+          "label": "Ürünler"
+        },
+        {
+          "value": "2",
+          "label": "E-Ödeme"
+        }
+      ],
+      "legacyControlId": "ddlHomeStyle"
+    },
+    {
+      "key": "AllProductsShow",
+      "group": "genel",
+      "label": "\"Tüm ürünler\" bağlantısını göster",
+      "control": "switch",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "legacyControlId": "ddlAllProductsShow"
+    },
+    {
+      "key": "SiteMap",
+      "group": "genel",
+      "label": "Site haritasını göster",
+      "control": "switch",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "legacyControlId": "ddlSiteMap"
+    },
+    {
+      "key": "Logo",
+      "group": "tasarim",
+      "label": "Logo (koyu)",
+      "control": "image",
+      "sqlType": "nvarchar",
+      "maxLength": 100,
+      "bitwise": false,
+      "legacyControlId": "imgLogo"
+    },
+    {
+      "key": "Logo2",
+      "group": "tasarim",
+      "label": "Logo (açık)",
+      "control": "image",
+      "sqlType": "nvarchar",
+      "maxLength": 100,
+      "bitwise": false,
+      "legacyControlId": "imgLogo2"
+    },
+    {
+      "key": "LogoLogin",
+      "group": "tasarim",
+      "label": "Giriş sayfası logosu",
+      "control": "image",
+      "sqlType": "nvarchar",
+      "maxLength": 100,
+      "bitwise": false,
+      "legacyControlId": "imgLogoLogin"
+    },
+    {
+      "key": "Favicon",
+      "group": "tasarim",
+      "label": "Favicon",
+      "control": "image",
+      "sqlType": "nvarchar",
+      "maxLength": 100,
+      "bitwise": false,
+      "legacyControlId": "imgFavicon"
+    },
+    {
+      "key": "NoImageImage",
+      "group": "tasarim",
+      "label": "Resimsiz ürünlerde varsayılan görsel",
+      "control": "image",
+      "sqlType": "nvarchar",
+      "maxLength": 100,
+      "bitwise": false,
+      "legacyControlId": "imgNoImage"
+    },
+    {
+      "key": "LayoutColor",
+      "group": "tasarim",
+      "label": "Ana renk",
+      "control": "color",
+      "sqlType": "nvarchar",
+      "maxLength": 10,
+      "bitwise": false,
+      "legacyControlId": "txtLayoutColor"
+    },
+    {
+      "key": "LayoutColor2",
+      "group": "tasarim",
+      "label": "İkincil renk",
+      "control": "color",
+      "sqlType": "nvarchar",
+      "maxLength": 20,
+      "bitwise": false,
+      "legacyControlId": "txtLayoutColor2"
+    },
+    {
+      "key": "ParameterTheme",
+      "group": "tasarim",
+      "label": "Tema",
+      "control": "select",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "0",
+          "label": "Standart Tasarım"
+        },
+        {
+          "value": "-1",
+          "label": "Otomotiv Tasarım"
+        },
+        {
+          "value": "1",
+          "label": "Tasarım 1"
+        },
+        {
+          "value": "2",
+          "label": "Tasarım 2"
+        },
+        {
+          "value": "3",
+          "label": "Tasarım 3"
+        },
+        {
+          "value": "4",
+          "label": "Tasarım 4"
+        },
+        {
+          "value": "5",
+          "label": "Tasarım 5"
+        },
+        {
+          "value": "6",
+          "label": "Tasarım 6"
+        },
+        {
+          "value": "7",
+          "label": "Tasarım 7"
+        },
+        {
+          "value": "8",
+          "label": "Tasarım 8"
+        },
+        {
+          "value": "9",
+          "label": "Tasarım 9"
+        },
+        {
+          "value": "10",
+          "label": "Tasarım 10"
+        },
+        {
+          "value": "11",
+          "label": "Tasarım 11"
+        },
+        {
+          "value": "12",
+          "label": "Tasarım 12"
+        },
+        {
+          "value": "13",
+          "label": "Tasarım 13"
+        },
+        {
+          "value": "14",
+          "label": "Tasarım 14"
+        },
+        {
+          "value": "15",
+          "label": "Tasarım 15"
+        },
+        {
+          "value": "16",
+          "label": "Tasarım 16"
+        },
+        {
+          "value": "17",
+          "label": "Tasarım 17"
+        },
+        {
+          "value": "18",
+          "label": "Tasarım 18"
+        },
+        {
+          "value": "19",
+          "label": "Tasarım 19"
+        },
+        {
+          "value": "20",
+          "label": "Tasarım 20"
+        },
+        {
+          "value": "21",
+          "label": "Tasarım 21"
+        },
+        {
+          "value": "22",
+          "label": "Tasarım 22"
+        },
+        {
+          "value": "23",
+          "label": "Tasarım 23"
+        },
+        {
+          "value": "24",
+          "label": "Tasarım 24"
+        },
+        {
+          "value": "25",
+          "label": "Tasarım 25"
+        },
+        {
+          "value": "26",
+          "label": "Tasarım 26"
+        },
+        {
+          "value": "27",
+          "label": "Tasarım 27"
+        },
+        {
+          "value": "28",
+          "label": "Tasarım 28"
+        },
+        {
+          "value": "29",
+          "label": "Tasarım 29"
+        },
+        {
+          "value": "30",
+          "label": "Tasarım 30"
+        }
+      ],
+      "legacyControlId": "ddParameterThema"
+    },
+    {
+      "key": "Layout",
+      "group": "tasarim",
+      "label": "Ürün listesinde \"Sepete Ekle\" butonunun yeri",
+      "control": "select",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "1",
+          "label": "Sağda"
+        },
+        {
+          "value": "0",
+          "label": "Solda"
+        }
+      ],
+      "legacyControlId": "ddlLayout"
+    },
+    {
+      "key": "ProductImageAspectRatio",
+      "group": "tasarim",
+      "label": "Ürün görseli en/boy oranı",
+      "control": "text",
+      "sqlType": "nvarchar",
+      "maxLength": 450,
+      "bitwise": false,
+      "legacyControlId": "txtProductImageAspectRatio",
+      "placeholder": "ör. 1:1"
+    },
+    {
+      "key": "CategoryMenuVisible",
+      "group": "tasarim",
+      "label": "Kategori menüsü gösterimi",
+      "control": "select",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "1",
+          "label": "Menü Gösterimi"
+        },
+        {
+          "value": "2",
+          "label": "Anasayfa Resimli Gösterim"
+        },
+        {
+          "value": "3",
+          "label": "Resimsiz Gösterim"
+        },
+        {
+          "value": "4",
+          "label": "Tüm Sayfada Resimli Gösterim"
+        },
+        {
+          "value": "0",
+          "label": "Gösterme"
+        }
+      ],
+      "legacyControlId": "ddlCategoryMenu"
+    },
+    {
+      "key": "DontShowMenuAtDealers",
+      "group": "tasarim",
+      "label": "Bayilerde menüyü göster",
+      "control": "switch",
+      "sqlType": "tinyint",
+      "maxLength": 1,
+      "bitwise": false,
+      "description": "Kolon adı \"DontShow\" olsa da eski ekranda 1 = Göster anlamında kullanılıyor.",
+      "legacyControlId": "ddlDontShowMenuAtDealers"
+    },
+    {
+      "key": "ParameterDesign",
+      "group": "tasarim",
+      "label": "Tasarım parametreleri",
+      "control": "bitmask",
+      "sqlType": "bigint",
+      "maxLength": 8,
+      "bitwise": true,
+      "options": [
+        {
+          "value": "1",
+          "label": "Ürün Tablo Görünümünde Görseli Doğrudan Göster"
+        },
+        {
+          "value": "2",
+          "label": "Ürün Varsayılan Görünümü Resimli Görünüm"
+        },
+        {
+          "value": "4",
+          "label": "Ürün Varsayılan Görünümü Uzun Resimli Görünüm"
+        },
+        {
+          "value": "8",
+          "label": "İkonlu Menü Gösterimi"
+        },
+        {
+          "value": "16",
+          "label": "Renkli İkonlu Menü Gösterimi"
+        },
+        {
+          "value": "32",
+          "label": "Normal Menü Gösterimi"
+        },
+        {
+          "value": "64",
+          "label": "Kategori Menüsünde Resim Göster"
+        },
+        {
+          "value": "128",
+          "label": "Oval Görünüm"
+        },
+        {
+          "value": "256",
+          "label": "Ürünlerde Sol Kategori Menüsü Göster"
+        },
+        {
+          "value": "512",
+          "label": "Tam ekran"
+        },
+        {
+          "value": "1024",
+          "label": "Günün Fırsatları Tekli Banner"
+        },
+        {
+          "value": "2048",
+          "label": "'Marka Menü' Üstte Göster"
+        },
+        {
+          "value": "4096",
+          "label": "Ürün resmine tıklanınca büyük resim gözüksün"
+        },
+        {
+          "value": "8192",
+          "label": "Mobilde özel tasarım"
+        },
+        {
+          "value": "16384",
+          "label": "Top menü göster"
+        },
+        {
+          "value": "32768",
+          "label": "Sabit B2B Menüsü"
+        },
+        {
+          "value": "65536",
+          "label": "Sol Kategori Menüsü Göster V2"
+        },
+        {
+          "value": "131072",
+          "label": "\"Header\" Menü Göster"
+        },
+        {
+          "value": "262144",
+          "label": "Anasayfa Ürünlerini Banner Olarak Göster"
+        },
+        {
+          "value": "524288",
+          "label": "\"Kategori Menü\" Solda Göster"
+        },
+        {
+          "value": "1048576",
+          "label": "\"Kategori Menü\" Üstte Göster"
+        },
+        {
+          "value": "2097152",
+          "label": "\"B2B Menü\" Gösterme"
+        },
+        {
+          "value": "4194304",
+          "label": "\"B2B Giriş\" Göster"
+        },
+        {
+          "value": "8388608",
+          "label": "\"Bayi Menü\" Gösterme"
+        },
+        {
+          "value": "16777216",
+          "label": "\"Yeni Üyelik\" Pop Up"
+        },
+        {
+          "value": "33554432",
+          "label": "\"Login'de Header Menü\" Göster"
+        },
+        {
+          "value": "67108864",
+          "label": "\"Login'de Footer Menü\" Göster"
+        },
+        {
+          "value": "134217728",
+          "label": "Mobilde Menü Kapalı Gelsin"
+        },
+        {
+          "value": "268435456",
+          "label": "Header menü koyu arka plan"
+        },
+        {
+          "value": "536870912",
+          "label": "Anasayfada kategori banner göster"
+        },
+        {
+          "value": "1073741824",
+          "label": "Anasayfada marka banner göster"
+        },
+        {
+          "value": "2147483648",
+          "label": "Dinamik Arama Göster"
+        },
+        {
+          "value": "4294967296",
+          "label": "Normal Menü Gösterimi (Koyu Arkaplan)"
+        },
+        {
+          "value": "8589934592",
+          "label": "Mobilde Masaüstü Menü Tasarımı"
+        },
+        {
+          "value": "17179869184",
+          "label": "Kategori Menü Üstte Göster V2"
+        },
+        {
+          "value": "34359738368",
+          "label": "İkinci menü gösterme"
+        },
+        {
+          "value": "68719476736",
+          "label": "Detaylı arama göster"
+        },
+        {
+          "value": "137438953472",
+          "label": "Filtreyi Göster"
+        },
+        {
+          "value": "274877906944",
+          "label": "Kategoriden bağımsız bütün filtreleri göster"
+        },
+        {
+          "value": "549755813888",
+          "label": "Sadece ürüne bağlı Kategorileri göster"
+        },
+        {
+          "value": "1099511627776",
+          "label": "Enerjik Giriş"
+        },
+        {
+          "value": "2199023255552",
+          "label": "Ürün Varsayılan Görünümü Çoklu Görünüm"
+        },
+        {
+          "value": "4398046511104",
+          "label": "Ürün blok görünümde ürün adında satır sınırı kaldır"
+        },
+        {
+          "value": "8796093022208",
+          "label": "Ana sayfa ürünlerinde başlık gösterme"
+        },
+        {
+          "value": "17592186044416",
+          "label": "Anasayfa kategori menüsünde alt kategorilerin hepsi birlikte görünsün"
+        },
+        {
+          "value": "35184372088832",
+          "label": "Ürün Varsayılan Görünümü Tablo Görünümü"
+        },
+        {
+          "value": "70368744177664",
+          "label": "Dinamik arama üstte göster"
+        },
+        {
+          "value": "140737488355328",
+          "label": "Hesabım menüsüne tıkladığında sabit b2b menü açılmasın"
+        },
+        {
+          "value": "281474976710656",
+          "label": "Akordiyon Kategori"
+        },
+        {
+          "value": "562949953421312",
+          "label": "İndirim kapatma switchi göster"
+        },
+        {
+          "value": "1125899906842624",
+          "label": "Sesle arama göster"
+        },
+        {
+          "value": "2251799813685248",
+          "label": "Kategori üst menü koyu arka plan"
+        },
+        {
+          "value": "4503599627370496",
+          "label": "Mobilde tekli ürün görünümü"
+        },
+        {
+          "value": "9007199254740992",
+          "label": "Sağ tık ve kopyalama devre dışı"
+        },
+        {
+          "value": "18014398509481984",
+          "label": "Stok kapatma switchi göster"
+        },
+        {
+          "value": "36028797018963968",
+          "label": "Kategori menü üstte gösterimde alt menü geniş gelsin"
+        },
+        {
+          "value": "72057594037927936",
+          "label": "Site arama motorlarında taranmasın"
+        },
+        {
+          "value": "144115188075855872",
+          "label": "Tek dil kullanan site url'lerinde dil kodu görünmesin"
+        }
+      ],
+      "legacyControlId": "ddlParameterDesign",
+      "knownMask": "288230376151711743"
+    },
+    {
+      "key": "ParameterMenu",
+      "group": "menu",
+      "label": "Menü gösterimi",
+      "control": "bitmask",
+      "sqlType": "bigint",
+      "maxLength": 8,
+      "bitwise": true,
+      "options": [
+        {
+          "value": "1",
+          "label": "Siparişleri Gösterme"
+        },
+        {
+          "value": "2",
+          "label": "Mesajları Gösterme"
+        },
+        {
+          "value": "4",
+          "label": "Bakiye Siparişleri Gösterme"
+        },
+        {
+          "value": "8",
+          "label": "Ödeme Sistemlerini Gösterme"
+        },
+        {
+          "value": "16",
+          "label": "Sepet Menüsünü Gösterme"
+        },
+        {
+          "value": "32",
+          "label": "Ürün Stok Sayfasını Gösterme"
+        },
+        {
+          "value": "64",
+          "label": "Çok Görüntülenenleri Gösterme"
+        },
+        {
+          "value": "128",
+          "label": "Yeni Ürünleri Gösterme"
+        },
+        {
+          "value": "256",
+          "label": "Stok Açıklamalarını Gösterme"
+        },
+        {
+          "value": "512",
+          "label": "Sıralamayı Gösterme"
+        },
+        {
+          "value": "1024",
+          "label": "Stokta Olanlar Menüsünü Gösterme"
+        },
+        {
+          "value": "2048",
+          "label": "Ürünler Menüsünü Gösterme"
+        },
+        {
+          "value": "4096",
+          "label": "Cari Hesap Hareketleri Menüsünü Gösterme"
+        },
+        {
+          "value": "8192",
+          "label": "Hesap Bakiyesi Menüsünü Gösterme"
+        },
+        {
+          "value": "16384",
+          "label": "Valör Takip Menüsünü Gösterme"
+        },
+        {
+          "value": "32768",
+          "label": "Hesap Numaraları Menüsünü Gösterme"
+        },
+        {
+          "value": "65536",
+          "label": "Haberler Menüsünü Gösterme"
+        },
+        {
+          "value": "131072",
+          "label": "Hızlı Sipariş Menüsünü Gösterme"
+        },
+        {
+          "value": "262144",
+          "label": "Online Ödeme Menüsünü Gösterme"
+        },
+        {
+          "value": "524288",
+          "label": "Kredi Kartı Ödemeleri Menüsünü Gösterme"
+        },
+        {
+          "value": "1048576",
+          "label": "Alt bayi Menüsünü Gösterme"
+        },
+        {
+          "value": "2097152",
+          "label": "Teklif Menüsünü Gösterme"
+        },
+        {
+          "value": "4194304",
+          "label": "Teklif Listesi Menüsünü Gösterme"
+        },
+        {
+          "value": "8388608",
+          "label": "Dövizler Menüsünü Gösterme"
+        },
+        {
+          "value": "16777216",
+          "label": "Talepler Menüsünü Gösterme"
+        },
+        {
+          "value": "33554432",
+          "label": "Kategori Seçimini Gösterme"
+        },
+        {
+          "value": "67108864",
+          "label": "Marka Seçimini Gösterme"
+        },
+        {
+          "value": "134217728",
+          "label": "Sezon Seçimini Gösterme"
+        },
+        {
+          "value": "268435456",
+          "label": "Günün Fırsatları Aramasını Gösterme"
+        },
+        {
+          "value": "536870912",
+          "label": "Çok Satanlar Aramasını Gösterme"
+        },
+        {
+          "value": "1073741824",
+          "label": "Kampanya Aramasını Gösterme"
+        },
+        {
+          "value": "2147483648",
+          "label": "Yeni Ürünler Aramasını Gösterme"
+        },
+        {
+          "value": "4294967296",
+          "label": "Çok Görüntülenenler Aramasını Gösterme"
+        },
+        {
+          "value": "8589934592",
+          "label": "Promosyon butonu göster"
+        },
+        {
+          "value": "17179869184",
+          "label": "Adres Eklemede Fatura Adresi Seçeneğini Göster"
+        },
+        {
+          "value": "34359738368",
+          "label": "Giriş Menüsünü Gösterme"
+        },
+        {
+          "value": "68719476736",
+          "label": "Aranan Kelime Kaydedilsin"
+        },
+        {
+          "value": "137438953472",
+          "label": "Adres Eklerken TC Kimlik No Göster"
+        },
+        {
+          "value": "274877906944",
+          "label": "Kampanya Butonu Göster"
+        },
+        {
+          "value": "549755813888",
+          "label": "Yeni ürünler butonu göster"
+        },
+        {
+          "value": "1099511627776",
+          "label": "Adres eklerken ülke seçimi göster"
+        },
+        {
+          "value": "2199023255552",
+          "label": "Genel arama gösterme"
+        },
+        {
+          "value": "4398046511104",
+          "label": "Vadeli fiyat seçimi göster"
+        },
+        {
+          "value": "8796093022208",
+          "label": "Oem Araması Göster"
+        },
+        {
+          "value": "17592186044416",
+          "label": "Girişte kvkk onayı iste"
+        },
+        {
+          "value": "35184372088832",
+          "label": "WhatsApp destek göster"
+        },
+        {
+          "value": "70368744177664",
+          "label": "Run flat filtresi göster"
+        },
+        {
+          "value": "140737488355328",
+          "label": "Yorumlar Menüsünü Gösterme"
+        },
+        {
+          "value": "281474976710656",
+          "label": "Cari Kod Gösterme"
+        },
+        {
+          "value": "562949953421312",
+          "label": "Barkod ile ürün arama"
+        },
+        {
+          "value": "1125899906842624",
+          "label": "Sadece stoktakiler seçili gelsin"
+        },
+        {
+          "value": "2251799813685248",
+          "label": "Markalar menüsü göster"
+        },
+        {
+          "value": "4503599627370496",
+          "label": "Firma Sayfası Göster"
+        },
+        {
+          "value": "9007199254740992",
+          "label": "Hesabımı sil menüsü göster"
+        },
+        {
+          "value": "18014398509481984",
+          "label": "Bildirimler menüsü göster"
+        },
+        {
+          "value": "36028797018963968",
+          "label": "Borç/alacak ay bazında göster"
+        },
+        {
+          "value": "72057594037927936",
+          "label": "Vadesi Geçen ay bazında göster"
+        },
+        {
+          "value": "144115188075855872",
+          "label": "Barkodla sepete ürün ekle göster"
+        },
+        {
+          "value": "288230376151711744",
+          "label": "Perakende fiyat seçimi göster"
+        },
+        {
+          "value": "576460752303423488",
+          "label": "Müşteri seçiminde fiyat tipi görünsün"
+        },
+        {
+          "value": "1152921504606846976",
+          "label": "Haftanın ürünleri menüsünü göster"
+        },
+        {
+          "value": "2305843009213693952",
+          "label": "Adres güncelle butonu gösterme"
+        },
+        {
+          "value": "4611686018427387904",
+          "label": "Akıllı arama gösterme"
+        }
+      ],
+      "description": "Dikkat: \"... Gösterme\" ile biten seçenekler işaretlendiğinde ilgili menü GİZLENİR.",
+      "legacyControlId": "ddlParameterMenu",
+      "knownMask": "9223372036854775807"
+    },
+    {
+      "key": "DoNotShowPrice",
+      "group": "urun-gosterim",
+      "label": "Fiyat gösterimi kısıtlaması",
+      "control": "select",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "0",
+          "label": "Kullanım Dışı"
+        },
+        {
+          "value": "1",
+          "label": "B2C'de Fiyatları Üye Girişi Olmadan Gösterme"
+        },
+        {
+          "value": "2",
+          "label": "B2B'de Fiyatları Gösterme"
+        },
+        {
+          "value": "4",
+          "label": "Fiyatları Sıfır Olan Ürünleri Listeleme"
+        },
+        {
+          "value": "5",
+          "label": "B2C'de üye girişi olmadan sadece piyasa fiyatını göster"
+        }
+      ],
+      "legacyControlId": "ddlDontShowPrice"
+    },
+    {
+      "key": "HasStockVisible",
+      "group": "urun-gosterim",
+      "label": "Stok takibi",
+      "control": "select",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "0",
+          "label": "Stok takibi yapma, tüm ürünleri stokta var göster"
+        },
+        {
+          "value": "1",
+          "label": "Stok takibi yap, stokta olmayana sipariş verme"
+        },
+        {
+          "value": "2",
+          "label": "Stok takibi yap, stokta olmayana sipariş ver"
+        },
+        {
+          "value": "3",
+          "label": "Stok takibi yap, stoktan fazlası eklenirse uyarıp onay iste"
+        },
+        {
+          "value": "4",
+          "label": "Ürün kartındaki \"Stok Takibi\" ayarı geçerli olsun"
+        },
+        {
+          "value": "5",
+          "label": "Stok miktarı kadar sipariş verilebilir"
+        }
+      ],
+      "legacyControlId": "ddlHasStock"
+    },
+    {
+      "key": "ProductTableStockType",
+      "group": "urun-gosterim",
+      "label": "Stok gösterim tipi",
+      "control": "select",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "0",
+          "label": "Adet Katları"
+        },
+        {
+          "value": "1",
+          "label": "Var / Yok"
+        },
+        {
+          "value": "7",
+          "label": "Var / Yok (İkon)"
+        },
+        {
+          "value": "2",
+          "label": "Adet (Sayısal)"
+        },
+        {
+          "value": "5",
+          "label": "4'e Kadar Adet Göster"
+        },
+        {
+          "value": "4",
+          "label": "20'ye Kadar Adet Göster"
+        },
+        {
+          "value": "6",
+          "label": "100'e Kadar Adet Göster"
+        },
+        {
+          "value": "3",
+          "label": "Gösterme"
+        }
+      ],
+      "description": "Tek seçimli alan: değer doğrudan kolona yazılır.",
+      "legacyControlId": "ddlProductTableStockType"
+    },
+    {
+      "key": "ParameterStock",
+      "group": "urun-gosterim",
+      "label": "Stok / depo gösterim seçenekleri",
+      "control": "bitmask",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": true,
+      "options": [
+        {
+          "value": "1",
+          "label": "Depoları göster"
+        },
+        {
+          "value": "2",
+          "label": "Depoları mouse ile stok değerinin üzerine gelince göster"
+        },
+        {
+          "value": "4",
+          "label": "Müşteriler depoları görmesin, yalnız müşteri temsilcileri görsün"
+        },
+        {
+          "value": "8",
+          "label": "Müşteriler Tüm Stokları Görsün"
+        },
+        {
+          "value": "16",
+          "label": "Stok Olmasa Bile Depoları Göster"
+        },
+        {
+          "value": "64",
+          "label": "Stok 0'sa Stok Sorunuz Gözüksün"
+        },
+        {
+          "value": "128",
+          "label": "Login olmadan stok gösterme"
+        },
+        {
+          "value": "256",
+          "label": "Müşteri temsilcisi stokların hepsini görmesin"
+        },
+        {
+          "value": "512",
+          "label": "Stoktan bağımsız ürünleri sorunuz göster"
+        },
+        {
+          "value": "1024",
+          "label": "Depolar sepete ekleye tıklayınca gelsin"
+        }
+      ],
+      "legacyControlId": "ddlParameterStock",
+      "dependsOn": {
+        "key": "ProductTableStockType",
+        "notIn": [
+          "3"
+        ],
+        "message": "Stok gösterim tipi \"Gösterme\" iken bu seçeneklerin çoğu etkisizdir."
+      },
+      "knownMask": "2015"
+    },
+    {
+      "key": "TaxInRatio",
+      "group": "urun-gosterim",
+      "label": "KDV gösterimi",
+      "control": "select",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "0",
+          "label": "Tüm fiyatları KDV hariç göster"
+        },
+        {
+          "value": "1",
+          "label": "Tüm fiyatları KDV dahil göster"
+        },
+        {
+          "value": "2",
+          "label": "Liste fiyatı KDV hariç, diğerleri KDV dahil"
+        },
+        {
+          "value": "3",
+          "label": "B2C'de tüm fiyatları KDV hariç göster"
+        }
+      ],
+      "legacyControlId": "ddlTaxInRatio"
+    },
+    {
+      "key": "ProductSort",
+      "group": "urun-gosterim",
+      "label": "Varsayılan ürün sıralaması",
+      "control": "select",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "0",
+          "label": "Normal"
+        },
+        {
+          "value": "1",
+          "label": "Ürün No"
+        },
+        {
+          "value": "2",
+          "label": "Ürün adı"
+        },
+        {
+          "value": "3",
+          "label": "Ürün kodu (A → Z)"
+        },
+        {
+          "value": "8",
+          "label": "Ürün kodu (Z → A)"
+        },
+        {
+          "value": "4",
+          "label": "Stok"
+        },
+        {
+          "value": "5",
+          "label": "Marka"
+        },
+        {
+          "value": "6",
+          "label": "Özel Sıralama"
+        },
+        {
+          "value": "7",
+          "label": "Kampanya"
+        }
+      ],
+      "legacyControlId": "ddlProductSort"
+    },
+    {
+      "key": "MainProducts",
+      "group": "urun-gosterim",
+      "label": "Ana sayfada gösterilecek ürün blokları",
+      "control": "bitmask",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": true,
+      "options": [
+        {
+          "value": "64",
+          "label": "Anasayfa"
+        },
+        {
+          "value": "128",
+          "label": "Kampanya"
+        },
+        {
+          "value": "256",
+          "label": "En Çok Satılan"
+        },
+        {
+          "value": "512",
+          "label": "Yeni ürün"
+        },
+        {
+          "value": "1024",
+          "label": "Çok Görüntülenen"
+        },
+        {
+          "value": "2048",
+          "label": "Günün Ürünü"
+        },
+        {
+          "value": "4096",
+          "label": "Haftanın Ürünü"
+        },
+        {
+          "value": "8192",
+          "label": "Ayın Ürünü"
+        },
+        {
+          "value": "16384",
+          "label": "Markalar"
+        },
+        {
+          "value": "1",
+          "label": "Part 1"
+        },
+        {
+          "value": "2",
+          "label": "Part 2"
+        },
+        {
+          "value": "4",
+          "label": "Part 3"
+        },
+        {
+          "value": "8",
+          "label": "Part 4"
+        },
+        {
+          "value": "16",
+          "label": "Part 5"
+        },
+        {
+          "value": "32",
+          "label": "Part 6"
+        }
+      ],
+      "legacyControlId": "ddMainProducts",
+      "knownMask": "32767"
+    },
+    {
+      "key": "Schedule",
+      "group": "urun-gosterim",
+      "label": "Yeni / çok satan / anasayfa ürünlerini manuel seçeceğim",
+      "control": "bitmask",
+      "sqlType": "tinyint",
+      "maxLength": 1,
+      "bitwise": true,
+      "options": [
+        {
+          "value": "1",
+          "label": "Yeni, çok satan ve anasayfada gösterilecek ürünleri manuel seçeceğim"
+        }
+      ],
+      "description": "Kapalıysa bu listeler sistem tarafından otomatik oluşturulur.",
+      "legacyControlId": "ddlSchedule",
+      "knownMask": "1"
+    },
+    {
+      "key": "VariationShow",
+      "group": "urun-gosterim",
+      "label": "Varyasyon gösterimi",
+      "control": "select",
+      "sqlType": "nvarchar",
+      "maxLength": 10,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "0",
+          "label": "Seçilmedi"
+        },
+        {
+          "value": "1",
+          "label": "Tablolu (2 seçenekli varyasyon)"
+        },
+        {
+          "value": "2",
+          "label": "Tablolu (çok seçenekli varyasyon)"
+        },
+        {
+          "value": "3",
+          "label": "Açılır liste"
+        },
+        {
+          "value": "4",
+          "label": "Çok seçimli (toplam adet alanına yansır)"
+        },
+        {
+          "value": "8",
+          "label": "Tek seçimli"
+        },
+        {
+          "value": "16",
+          "label": "Stok bazlı kutucuklu"
+        }
+      ],
+      "legacyControlId": "ddlVariationShow"
+    },
+    {
+      "key": "ExportProductList",
+      "group": "urun-gosterim",
+      "label": "Dışa aktarım butonları",
+      "control": "bitmask",
+      "sqlType": "smallint",
+      "maxLength": 2,
+      "bitwise": true,
+      "options": [
+        {
+          "value": "1",
+          "label": "Ürünleri Excel'e Aktar"
+        },
+        {
+          "value": "2",
+          "label": "Sepeti PDF'e Aktar"
+        },
+        {
+          "value": "4",
+          "label": "Cari Hareketleri Excel'e Aktar"
+        },
+        {
+          "value": "8",
+          "label": "Sepeti Excel'e Aktar"
+        },
+        {
+          "value": "16",
+          "label": "Sipariş takipte Excel'e aktar"
+        },
+        {
+          "value": "32",
+          "label": "Bakiye siparişte Excel'e aktar"
+        },
+        {
+          "value": "64",
+          "label": "Cari hareketlerde PDF'e aktar"
+        },
+        {
+          "value": "128",
+          "label": "Excel aktarımda ürün görseli göster"
+        },
+        {
+          "value": "256",
+          "label": "Bakiye siparişi PDF'e aktar"
+        }
+      ],
+      "legacyControlId": "ddlExportProductList",
+      "knownMask": "511"
+    },
+    {
+      "key": "TwoWorkingSystem",
+      "group": "urun-gosterim",
+      "label": "B2B & B2C ortak çalışma",
+      "control": "select",
+      "sqlType": "nvarchar",
+      "maxLength": 25,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "1",
+          "label": "Hayır"
+        },
+        {
+          "value": "0",
+          "label": "Evet"
+        }
+      ],
+      "description": "Eski ekranda değerler ters: 1 = Hayır, 0 = Evet. Kolon eşleşmesi kontrol edilecek.",
+      "legacyControlId": "ddlCommonSystem"
+    },
+    {
+      "key": "MinStockFilter",
+      "group": "urun-gosterim",
+      "label": "Minimum stok adedi filtresi",
+      "control": "number",
+      "sqlType": "nvarchar",
+      "maxLength": 20,
+      "bitwise": false,
+      "legacyControlId": "txtMinStockFilter",
+      "min": 0
+    },
+    {
+      "key": "ParameterProductDetail",
+      "group": "urun-detay",
+      "label": "Ürün detay parametreleri",
+      "control": "bitmask",
+      "sqlType": "bigint",
+      "maxLength": 8,
+      "bitwise": true,
+      "options": [
+        {
+          "value": "1",
+          "label": "Ağırlık Göster"
+        },
+        {
+          "value": "2",
+          "label": "Hacim Göster"
+        },
+        {
+          "value": "4",
+          "label": "Marka Gösterme"
+        },
+        {
+          "value": "8",
+          "label": "Kur Gösterme"
+        },
+        {
+          "value": "16",
+          "label": "Normal Fiyat Gösterme"
+        },
+        {
+          "value": "32",
+          "label": "Açılır Pencere Fiyatı Gösterme"
+        },
+        {
+          "value": "64",
+          "label": "Gerçek fiyat gösterme"
+        },
+        {
+          "value": "128",
+          "label": "Fiyat Gösterme"
+        },
+        {
+          "value": "256",
+          "label": "Birim Gösterme"
+        },
+        {
+          "value": "512",
+          "label": "Resim Gösterme"
+        },
+        {
+          "value": "1024",
+          "label": "Yoldaki Stok Gösterme"
+        },
+        {
+          "value": "2048",
+          "label": "Sevk Edilmeye Başlayan Sipariş Adedi Gösterme"
+        },
+        {
+          "value": "4096",
+          "label": "Piyasa Fiyatı Gösterme"
+        },
+        {
+          "value": "8192",
+          "label": "Ambalaj Tipi Gösterme"
+        },
+        {
+          "value": "16384",
+          "label": "OEM Gösterme"
+        },
+        {
+          "value": "32768",
+          "label": "Eşdeğer Kod Gösterme"
+        },
+        {
+          "value": "65536",
+          "label": "Ürün Kodu Gösterme"
+        },
+        {
+          "value": "131072",
+          "label": "Ürün Kısa Kodu Gösterme"
+        },
+        {
+          "value": "262144",
+          "label": "Ürün Kısa Açıklaması Gösterme"
+        },
+        {
+          "value": "524288",
+          "label": "Varyasyon Gösterme"
+        },
+        {
+          "value": "1048576",
+          "label": "Kdv Oranı Gösterme"
+        },
+        {
+          "value": "2097152",
+          "label": "Komisyon Oranı Gösterme"
+        },
+        {
+          "value": "4194304",
+          "label": "İndirim Gösterme"
+        },
+        {
+          "value": "8388608",
+          "label": "Üretici Kodu Gösterme"
+        },
+        {
+          "value": "16777216",
+          "label": "Minimum Sipariş Göster"
+        },
+        {
+          "value": "33554432",
+          "label": "Ürünlerde Küçük Resim Gösterme"
+        },
+        {
+          "value": "67108864",
+          "label": "Ürün Stok Sayfası Gösterme"
+        },
+        {
+          "value": "134217728",
+          "label": "Sepete ekle gösterme"
+        },
+        {
+          "value": "268435456",
+          "label": "Sayfalama Özelliği Kullanma"
+        },
+        {
+          "value": "536870912",
+          "label": "Uyumlu Araçları Gösterme"
+        },
+        {
+          "value": "1073741824",
+          "label": "Üretim Tarihi Göster"
+        },
+        {
+          "value": "2147483648",
+          "label": "Önceki sonraki ürün butonu göster"
+        },
+        {
+          "value": "4294967296",
+          "label": "KDV Hariç/Dahil Fiyatı Gösterme"
+        },
+        {
+          "value": "8589934592",
+          "label": "Mevsim Gösterme"
+        },
+        {
+          "value": "17179869184",
+          "label": "Lastik Etiketi Göster"
+        },
+        {
+          "value": "34359738368",
+          "label": "Taksit Bilgilerini Göster"
+        },
+        {
+          "value": "68719476736",
+          "label": "Alternatif Ürünleri Göster"
+        },
+        {
+          "value": "137438953472",
+          "label": "İlgili Ürünleri Göster"
+        },
+        {
+          "value": "274877906944",
+          "label": "Sipariş Geçmişini Göster"
+        },
+        {
+          "value": "549755813888",
+          "label": "Yorumları Göster"
+        },
+        {
+          "value": "1099511627776",
+          "label": "Icon 1"
+        },
+        {
+          "value": "2199023255552",
+          "label": "Icon 2"
+        },
+        {
+          "value": "4398046511104",
+          "label": "Icon 3"
+        },
+        {
+          "value": "8796093022208",
+          "label": "Icon 4"
+        },
+        {
+          "value": "17592186044416",
+          "label": "Icon 5"
+        },
+        {
+          "value": "35184372088832",
+          "label": "Icon 6"
+        },
+        {
+          "value": "70368744177664",
+          "label": "Akıllı Aramada Seçenek"
+        },
+        {
+          "value": "140737488355328",
+          "label": "Ürün Talebi Göster"
+        },
+        {
+          "value": "281474976710656",
+          "label": "Stok Gösterme"
+        },
+        {
+          "value": "562949953421312",
+          "label": "Aynı Markaya Ait Ürünleri Göster"
+        },
+        {
+          "value": "1125899906842624",
+          "label": "Birime Göre Sepete Ekle Göster"
+        },
+        {
+          "value": "2251799813685248",
+          "label": "Menşei Göster"
+        },
+        {
+          "value": "4503599627370496",
+          "label": "\"Hemen Al\" Butonu Göster"
+        },
+        {
+          "value": "18014398509481984",
+          "label": "Alış Fiyatı Göster"
+        },
+        {
+          "value": "36028797018963968",
+          "label": "Ek Alan 1"
+        },
+        {
+          "value": "72057594037927936",
+          "label": "Ek Alan 2"
+        },
+        {
+          "value": "144115188075855872",
+          "label": "Ek Alan 3"
+        },
+        {
+          "value": "288230376151711744",
+          "label": "Ek Alan 4"
+        },
+        {
+          "value": "576460752303423488",
+          "label": "Ek Alan 5"
+        },
+        {
+          "value": "1152921504606846976",
+          "label": "Ek Alan 6"
+        },
+        {
+          "value": "2305843009213693952",
+          "label": "Yoldaki Stok Not Göster"
+        },
+        {
+          "value": "4611686018427387904",
+          "label": "Temsilci indirim yetkisi kullan"
+        }
+      ],
+      "legacyControlId": "ddlProductDetailParameter",
+      "knownMask": "9214364837600034815"
+    },
+    {
+      "key": "ParameterProductDetail2",
+      "group": "urun-detay",
+      "label": "Ürün detay parametreleri 2",
+      "control": "bitmask",
+      "sqlType": "bigint",
+      "maxLength": 8,
+      "bitwise": true,
+      "options": [
+        {
+          "value": "1",
+          "label": "Sabit fiyat göster"
+        },
+        {
+          "value": "2",
+          "label": "\"Detay butonu\" gösterme"
+        },
+        {
+          "value": "4",
+          "label": "Özel ikonları gizle"
+        },
+        {
+          "value": "8",
+          "label": "Adet girişi gösterme"
+        },
+        {
+          "value": "16",
+          "label": "Ürün Karşılaştırma"
+        },
+        {
+          "value": "32",
+          "label": "Varyasyonda Fiyat Göster"
+        },
+        {
+          "value": "64",
+          "label": "Stok yoksa sepete ekle alanı gözükmesin, stok açıklaması gözüksün"
+        },
+        {
+          "value": "128",
+          "label": "Yakınlaştırma kullanma"
+        },
+        {
+          "value": "256",
+          "label": "Kredi kartı fiyatı göster"
+        },
+        {
+          "value": "512",
+          "label": "Ürün detay görselleri düz görünüm"
+        },
+        {
+          "value": "1024",
+          "label": "Fiyat Kodu Göster"
+        },
+        {
+          "value": "2048",
+          "label": "Havale Fiyatı Göster"
+        },
+        {
+          "value": "4096",
+          "label": "Ürün Detay Görselleri Açık Olarak Gelsin"
+        },
+        {
+          "value": "8192",
+          "label": "Barkod Numarası Göster"
+        },
+        {
+          "value": "16384",
+          "label": "Video göster"
+        },
+        {
+          "value": "32768",
+          "label": "Piyasa fiyatı açılır pencere göster"
+        },
+        {
+          "value": "65536",
+          "label": "Fiyat açılır pencere göster"
+        },
+        {
+          "value": "131072",
+          "label": "Ürünler dışa aktarım"
+        },
+        {
+          "value": "262144",
+          "label": "Marka görseli gösterme"
+        },
+        {
+          "value": "524288",
+          "label": "İlgili ürünleri filtreye göre getir"
+        },
+        {
+          "value": "1048576",
+          "label": "İlgili ürünleri ürün grubuna (ProductRelatedCode) göre getir"
+        },
+        {
+          "value": "2097152",
+          "label": "Ürün detayda filtre gösterme"
+        },
+        {
+          "value": "4194304",
+          "label": "Ürün aramada varyasyon görsellerini göster"
+        },
+        {
+          "value": "8388608",
+          "label": "Whatsapp ile sipariş ver göster"
+        },
+        {
+          "value": "16777216",
+          "label": "Varyasyon tablosunda değerleri ters çevir"
+        },
+        {
+          "value": "33554432",
+          "label": "Varyasyon tablosunda Ek Alan 1 göster"
+        },
+        {
+          "value": "67108864",
+          "label": "Varyasyon tablosunda Ek Alan 2 göster"
+        },
+        {
+          "value": "134217728",
+          "label": "Varyasyon tablosunda fiyat göster"
+        },
+        {
+          "value": "268435456",
+          "label": "Oturum kapalıyken stok göster (İptal)"
+        },
+        {
+          "value": "536870912",
+          "label": "Temsilcilere özel fiyat alanını kapat"
+        },
+        {
+          "value": "1073741824",
+          "label": "Açılır pencerede ödeme metodlarının fiyatlarını göster"
+        },
+        {
+          "value": "2147483648",
+          "label": "İlgili ürünleri filtreye göre toplu sepete ekleme"
+        },
+        {
+          "value": "4294967296",
+          "label": "Uyumlu araçları açık olarak göster"
+        },
+        {
+          "value": "8589934592",
+          "label": "Yeni sekmede aç göster"
+        },
+        {
+          "value": "17179869184",
+          "label": "Ürüne tıklayınca ürün detaya gitmesin"
+        },
+        {
+          "value": "34359738368",
+          "label": "Ürün sıralaması seçimini gösterme"
+        },
+        {
+          "value": "68719476736",
+          "label": "Ürün detayda kampanyalı ürünleri göster"
+        },
+        {
+          "value": "137438953472",
+          "label": "Ürün detayda sosyal medyada paylaş göster"
+        },
+        {
+          "value": "274877906944",
+          "label": "Palet göster"
+        },
+        {
+          "value": "549755813888",
+          "label": "Varyasyonda resim göster"
+        },
+        {
+          "value": "1099511627776",
+          "label": "Ürün notu göster"
+        },
+        {
+          "value": "2199023255552",
+          "label": "Ürünlerde sepete ekleye tıklayınca ürün detaya gitsin"
+        },
+        {
+          "value": "4398046511104",
+          "label": "Kredi kartı taksitli fiyatı göster"
+        },
+        {
+          "value": "8796093022208",
+          "label": "Paket içi kdv hariç/dahil adet fiyatı göster"
+        },
+        {
+          "value": "17592186044416",
+          "label": "Kdv dahil/hariç fiyatı kdv oranına göre renkli göster"
+        },
+        {
+          "value": "35184372088832",
+          "label": "Kredi kartı ile sonradan ödeme fiyatı göster"
+        },
+        {
+          "value": "70368744177664",
+          "label": "Paket içi adet fiyatı göster"
+        },
+        {
+          "value": "140737488355328",
+          "label": "Kredi kartı ile sonradan ödeme fiyatı 2 göster"
+        },
+        {
+          "value": "281474976710656",
+          "label": "Çift aramada ön/arka lastik göster"
+        },
+        {
+          "value": "562949953421312",
+          "label": "Gerçek stok göster"
+        },
+        {
+          "value": "1125899906842624",
+          "label": "Rezerve stok göster"
+        },
+        {
+          "value": "2251799813685248",
+          "label": "Cari fiyatı göster"
+        },
+        {
+          "value": "4503599627370496",
+          "label": "İndirimli fiyatta normal fiyatın üstünü çiz"
+        },
+        {
+          "value": "9007199254740992",
+          "label": "Açılır pencerede sabit ödeme metodlarının fiyatlarını göster"
+        },
+        {
+          "value": "18014398509481984",
+          "label": "Sipariş mailinde piyasa fiyatı göster"
+        },
+        {
+          "value": "36028797018963968",
+          "label": "Patlak resim göster"
+        }
+      ],
+      "legacyControlId": "ddlProductDetailParameter2",
+      "knownMask": "72057594037927935"
+    },
+    {
+      "key": "ParameterProductDetailNotLogin",
+      "group": "urun-detay",
+      "label": "Ürün detay parametreleri (B2C – oturum kapalı)",
+      "control": "bitmask",
+      "sqlType": "bigint",
+      "maxLength": 8,
+      "bitwise": true,
+      "options": [
+        {
+          "value": "1",
+          "label": "Ağırlık Göster"
+        },
+        {
+          "value": "2",
+          "label": "Hacim Göster"
+        },
+        {
+          "value": "4",
+          "label": "Marka Gösterme"
+        },
+        {
+          "value": "8",
+          "label": "Kur Gösterme"
+        },
+        {
+          "value": "16",
+          "label": "Normal Fiyat Gösterme"
+        },
+        {
+          "value": "32",
+          "label": "Açılır Pencere Fiyatı Gösterme"
+        },
+        {
+          "value": "64",
+          "label": "Gerçek fiyat gösterme"
+        },
+        {
+          "value": "128",
+          "label": "Fiyat Gösterme"
+        },
+        {
+          "value": "256",
+          "label": "Birim Gösterme"
+        },
+        {
+          "value": "512",
+          "label": "Resim Gösterme"
+        },
+        {
+          "value": "1024",
+          "label": "Yoldaki Stok Gösterme"
+        },
+        {
+          "value": "2048",
+          "label": "Sevk Edilmeye Başlayan Sipariş Adedi Gösterme"
+        },
+        {
+          "value": "4096",
+          "label": "Piyasa Fiyatı Gösterme"
+        },
+        {
+          "value": "8192",
+          "label": "Ambalaj Tipi Gösterme"
+        },
+        {
+          "value": "16384",
+          "label": "OEM Gösterme"
+        },
+        {
+          "value": "32768",
+          "label": "Eşdeğer Kod Gösterme"
+        },
+        {
+          "value": "65536",
+          "label": "Ürün Kodu Gösterme"
+        },
+        {
+          "value": "131072",
+          "label": "Ürün Kısa Kodu Gösterme"
+        },
+        {
+          "value": "262144",
+          "label": "Ürün Kısa Açıklaması Gösterme"
+        },
+        {
+          "value": "524288",
+          "label": "Varyasyon Gösterme"
+        },
+        {
+          "value": "1048576",
+          "label": "Kdv Oranı Gösterme"
+        },
+        {
+          "value": "2097152",
+          "label": "Komisyon Oranı Gösterme"
+        },
+        {
+          "value": "4194304",
+          "label": "İndirim Gösterme"
+        },
+        {
+          "value": "8388608",
+          "label": "Üretici Kodu Gösterme"
+        },
+        {
+          "value": "16777216",
+          "label": "Minimum Sipariş Göster"
+        },
+        {
+          "value": "33554432",
+          "label": "Ürünlerde Küçük Resim Gösterme"
+        },
+        {
+          "value": "67108864",
+          "label": "Ürün Stok Sayfası Gösterme"
+        },
+        {
+          "value": "134217728",
+          "label": "Sepete ekle gösterme"
+        },
+        {
+          "value": "268435456",
+          "label": "Sayfalama Özelliği Kullanma"
+        },
+        {
+          "value": "536870912",
+          "label": "Uyumlu Araçları Gösterme"
+        },
+        {
+          "value": "1073741824",
+          "label": "Üretim Tarihi Göster"
+        },
+        {
+          "value": "2147483648",
+          "label": "Önceki sonraki ürün butonu göster"
+        },
+        {
+          "value": "4294967296",
+          "label": "KDV Hariç/Dahil Fiyatı Gösterme"
+        },
+        {
+          "value": "8589934592",
+          "label": "Mevsim Gösterme"
+        },
+        {
+          "value": "17179869184",
+          "label": "Lastik Etiketi Göster"
+        },
+        {
+          "value": "34359738368",
+          "label": "Taksit Bilgilerini Göster"
+        },
+        {
+          "value": "68719476736",
+          "label": "Alternatif Ürünleri Göster"
+        },
+        {
+          "value": "137438953472",
+          "label": "İlgili Ürünleri Göster"
+        },
+        {
+          "value": "274877906944",
+          "label": "Sipariş Geçmişini Göster"
+        },
+        {
+          "value": "549755813888",
+          "label": "Yorumları Göster"
+        },
+        {
+          "value": "1099511627776",
+          "label": "Icon 1"
+        },
+        {
+          "value": "2199023255552",
+          "label": "Icon 2"
+        },
+        {
+          "value": "4398046511104",
+          "label": "Icon 3"
+        },
+        {
+          "value": "8796093022208",
+          "label": "Icon 4"
+        },
+        {
+          "value": "17592186044416",
+          "label": "Icon 5"
+        },
+        {
+          "value": "35184372088832",
+          "label": "Icon 6"
+        },
+        {
+          "value": "70368744177664",
+          "label": "Akıllı Aramada Seçenek"
+        },
+        {
+          "value": "140737488355328",
+          "label": "Ürün Talebi Göster"
+        },
+        {
+          "value": "281474976710656",
+          "label": "Stok Gösterme"
+        },
+        {
+          "value": "562949953421312",
+          "label": "Aynı Markaya Ait Ürünleri Göster"
+        },
+        {
+          "value": "1125899906842624",
+          "label": "Birime Göre Sepete Ekle Göster"
+        },
+        {
+          "value": "2251799813685248",
+          "label": "Menşei Göster"
+        },
+        {
+          "value": "4503599627370496",
+          "label": "\"Hemen Al\" Butonu Göster"
+        },
+        {
+          "value": "18014398509481984",
+          "label": "Alış Fiyatı Göster"
+        },
+        {
+          "value": "36028797018963968",
+          "label": "Ek Alan 1"
+        },
+        {
+          "value": "72057594037927936",
+          "label": "Ek Alan 2"
+        },
+        {
+          "value": "144115188075855872",
+          "label": "Ek Alan 3"
+        },
+        {
+          "value": "288230376151711744",
+          "label": "Ek Alan 4"
+        },
+        {
+          "value": "576460752303423488",
+          "label": "Ek Alan 5"
+        },
+        {
+          "value": "1152921504606846976",
+          "label": "Ek Alan 6"
+        },
+        {
+          "value": "2305843009213693952",
+          "label": "Yoldaki Stok Not Göster"
+        },
+        {
+          "value": "4611686018427387904",
+          "label": "Temsilci indirim yetkisi kullan"
+        }
+      ],
+      "description": "Üye girişi yapmamış ziyaretçilerin gördüğü ürün detayını belirler.",
+      "legacyControlId": "ddlParameterProductDetailNotLogin",
+      "knownMask": "9214364837600034815"
+    },
+    {
+      "key": "ParameterProductSearch",
+      "group": "arama",
+      "label": "Ürün arama parametreleri",
+      "control": "bitmask",
+      "sqlType": "smallint",
+      "maxLength": 2,
+      "bitwise": true,
+      "options": [
+        {
+          "value": "1",
+          "label": "Araç marka bölümünü aramada göster"
+        },
+        {
+          "value": "2",
+          "label": "Müşteri Temsilcisi Tüm Fiyatları Görsün"
+        },
+        {
+          "value": "4",
+          "label": "Müşteri Temsilcisi Alış Fiyatını Görsün"
+        },
+        {
+          "value": "8",
+          "label": "Sadece tam eşleşen ürünleri bul"
+        },
+        {
+          "value": "16",
+          "label": "Hızlı arama kullan"
+        },
+        {
+          "value": "32",
+          "label": "Marka model aramasında tüm seçimler yapılırsa arama yapılsın"
+        },
+        {
+          "value": "64",
+          "label": "Ürün aramada ürün kodu devre dışı"
+        },
+        {
+          "value": "128",
+          "label": "Çift arama göster"
+        },
+        {
+          "value": "256",
+          "label": "Kategori adına göre arama otomatik olmasın"
+        },
+        {
+          "value": "512",
+          "label": "Ürün filtresi limiti olmasın"
+        },
+        {
+          "value": "1024",
+          "label": "Ürün aramada ürün adı devre dışı"
+        },
+        {
+          "value": "2048",
+          "label": "Ürün aramada marka adı devre dışı"
+        },
+        {
+          "value": "4096",
+          "label": "Sadece tam eşleşen ürünleri bul (boşlukları silerek)"
+        },
+        {
+          "value": "8192",
+          "label": "Şasi no ile arama göster"
+        },
+        {
+          "value": "16384",
+          "label": "Kategori aramasında özel sıralama kullan"
+        },
+        {
+          "value": "32768",
+          "label": "İlk listelemede ürünler gelmesin",
+          "unsupported": true
+        },
+        {
+          "value": "65536",
+          "label": "Çift aramada grup sıralaması aktif",
+          "unsupported": true
+        },
+        {
+          "value": "131072",
+          "label": "Hızlı aramada tam eşleşme devre dışı",
+          "unsupported": true
+        },
+        {
+          "value": "262144",
+          "label": "Cari bazlı arama limiti kullan",
+          "unsupported": true
+        },
+        {
+          "value": "524288",
+          "label": "Kategori url'si devre dışı",
+          "unsupported": true
+        },
+        {
+          "value": "1048576",
+          "label": "Ürün kodunda tam eşleşme devre dışı",
+          "unsupported": true
+        }
+      ],
+      "legacyControlId": "ddlProductSearchParameter",
+      "knownMask": "32767"
+    },
+    {
+      "key": "ParameterDynamicSearch",
+      "group": "arama",
+      "label": "Dinamik arama alanları",
+      "control": "bitmask",
+      "sqlType": "tinyint",
+      "maxLength": 1,
+      "bitwise": true,
+      "options": [
+        {
+          "value": "1",
+          "label": "Genel Arama"
+        },
+        {
+          "value": "2",
+          "label": "Marka"
+        },
+        {
+          "value": "4",
+          "label": "Modeli"
+        }
+      ],
+      "legacyControlId": "ddlParameterDynamicSearch",
+      "knownMask": "7"
+    },
+    {
+      "key": "SearchBrandShow",
+      "group": "arama",
+      "label": "Markaya göre arama",
+      "control": "switch",
+      "sqlType": "bit",
+      "maxLength": 1,
+      "bitwise": false,
+      "legacyControlId": "ddlSearchMarka"
+    },
+    {
+      "key": "SearchShowDetail",
+      "group": "arama",
+      "label": "Detaylı arama",
+      "control": "switch",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "legacyControlId": "ddlSearchDetail"
+    },
+    {
+      "key": "DontUseLcnAutoComplate",
+      "group": "arama",
+      "label": "Hızlı aramada listeleme kullanma",
+      "control": "switch",
+      "sqlType": "bit",
+      "maxLength": 1,
+      "bitwise": false,
+      "legacyControlId": "chkDontUseLcnAutoComplate"
+    },
+    {
+      "key": "SortFilterShow",
+      "group": "arama",
+      "label": "Filtre panelini göster",
+      "control": "switch",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "legacyControlId": "ddlFilterSort"
+    },
+    {
+      "key": "UseFiltering",
+      "group": "arama",
+      "label": "Gösterilecek filtreler",
+      "control": "bitmask",
+      "sqlType": "nvarchar",
+      "maxLength": 250,
+      "bitwise": true,
+      "options": [
+        {
+          "value": "2",
+          "label": "Marka Filtresi"
+        },
+        {
+          "value": "4",
+          "label": "Ürün Özellikleri"
+        },
+        {
+          "value": "8",
+          "label": "Varyasyon Filtresi"
+        },
+        {
+          "value": "16",
+          "label": "Kategori Filtresi"
+        }
+      ],
+      "description": "Bitwise değer, metin (nvarchar) kolonda sayı olarak saklanıyor.",
+      "legacyControlId": "ddUseFiltering",
+      "dependsOn": {
+        "key": "SortFilterShow",
+        "in": [
+          "1"
+        ],
+        "message": "Filtre paneli kapalıyken bu seçimler portalda görünmez."
+      },
+      "knownMask": "30"
+    },
+    {
+      "key": "MinCartCount",
+      "group": "sepet",
+      "label": "Minimum sepet adedi",
+      "control": "number",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "legacyControlId": "txtMinCartCount",
+      "min": 0
+    },
+    {
+      "key": "MinCartTotal",
+      "group": "sepet",
+      "label": "Minimum sepet tutarı",
+      "control": "number",
+      "sqlType": "decimal",
+      "maxLength": 9,
+      "bitwise": false,
+      "legacyControlId": "txtMinCartTotal",
+      "min": 0
+    },
+    {
+      "key": "MaximumOrderQuantity",
+      "group": "sepet",
+      "label": "Ürün başına maksimum sipariş adedi",
+      "control": "number",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "description": "0 = sınırsız.",
+      "legacyControlId": "txtMaximumOrderQuantity",
+      "min": 0
+    },
+    {
+      "key": "ParameterOrder",
+      "group": "sepet",
+      "label": "Alışveriş sepeti parametreleri",
+      "control": "bitmask",
+      "sqlType": "bigint",
+      "maxLength": 8,
+      "bitwise": true,
+      "options": [
+        {
+          "value": "1",
+          "label": "Siparişte Sözleşme Onayı İste"
+        },
+        {
+          "value": "2",
+          "label": "Siparişte Teslimat Adresi Seçimi İste"
+        },
+        {
+          "value": "4",
+          "label": "Siparişte Kargo Seçimi İste"
+        },
+        {
+          "value": "8",
+          "label": "Siparişte Fatura Adresi Seçimi İste"
+        },
+        {
+          "value": "16",
+          "label": "Sipariş ekranında liste fiyatı gözükmesin"
+        },
+        {
+          "value": "32",
+          "label": "Kupon Göster"
+        },
+        {
+          "value": "64",
+          "label": "Bakiye Siparişte Teslimat Tarihini Gösterme"
+        },
+        {
+          "value": "128",
+          "label": "Siparişte Ek Alan-2 Gösterilsin"
+        },
+        {
+          "value": "256",
+          "label": "Siparişte Ürün Kısa Açıklama Gösterilsin"
+        },
+        {
+          "value": "512",
+          "label": "Sepette İndirim Gösterme"
+        },
+        {
+          "value": "1024",
+          "label": "Yeni Adres Ekle Gösterme"
+        },
+        {
+          "value": "2048",
+          "label": "Container Kullan"
+        },
+        {
+          "value": "4096",
+          "label": "Sepette Promosyon Ürünleri Göster"
+        },
+        {
+          "value": "8192",
+          "label": "Sepet Ürünlerini Kategorilere Göre Grupla"
+        },
+        {
+          "value": "16384",
+          "label": "Sipariş mailinde sadece indirimli fiyat göster"
+        },
+        {
+          "value": "32768",
+          "label": "Kapıda ödemeyi ödeme seçenekleri içinde göster"
+        },
+        {
+          "value": "65536",
+          "label": "Sepette fiyatları kdv dahil göster"
+        },
+        {
+          "value": "131072",
+          "label": "Mailde hesap bakiyesi göster"
+        },
+        {
+          "value": "262144",
+          "label": "Siparişte google analytics kullan"
+        },
+        {
+          "value": "524288",
+          "label": "Vade Farkı Gönderme"
+        },
+        {
+          "value": "1048576",
+          "label": "Sepete ekleyen göster"
+        },
+        {
+          "value": "2097152",
+          "label": "Cari Limit Takibi"
+        },
+        {
+          "value": "4194304",
+          "label": "Cari Limit Uyarısı"
+        },
+        {
+          "value": "8388608",
+          "label": "Bekleyen siparişler limit takibine dahil edilsin"
+        },
+        {
+          "value": "16777216",
+          "label": "Fatura ve teslimat adreslerini ayır"
+        },
+        {
+          "value": "33554432",
+          "label": "Bakiye siparişte fiyat göster"
+        },
+        {
+          "value": "67108864",
+          "label": "Marka bazlı iskonto kullan"
+        },
+        {
+          "value": "134217728",
+          "label": "EFatura basarken dbs ve limit kontrolu yap"
+        },
+        {
+          "value": "268435456",
+          "label": "Sepete eklenmiş mi? Kontrolü yapılsın"
+        },
+        {
+          "value": "536870912",
+          "label": "Sepete eklerken bakiye sipariş kontrolü yap"
+        },
+        {
+          "value": "1073741824",
+          "label": "Sepette ürün toplamları KDV dahil"
+        },
+        {
+          "value": "2147483648",
+          "label": "Vade tarihi gösterme"
+        },
+        {
+          "value": "4294967296",
+          "label": "Sepette döviz toplamı göster"
+        },
+        {
+          "value": "8589934592",
+          "label": "Sepette adet toplamları ürün çeşidine göre olsun"
+        },
+        {
+          "value": "17179869184",
+          "label": "Cari hareketlerde açıklama gösterme"
+        },
+        {
+          "value": "34359738368",
+          "label": "Sipariş mailinde siparişi tamamlayan göster"
+        },
+        {
+          "value": "68719476736",
+          "label": "Sipariş mailinde döviz kurlarını göster"
+        },
+        {
+          "value": "137438953472",
+          "label": "Marka veya Ödeme Türüne Göre Sepeti Canlı Güncelle"
+        },
+        {
+          "value": "274877906944",
+          "label": "Siparişte gönderilen sipariş göster"
+        },
+        {
+          "value": "549755813888",
+          "label": "Koli Bazlı Sipariş / Koli Adet Gösterimi"
+        },
+        {
+          "value": "1099511627776",
+          "label": "Variasyon grubu bazında sepete ekleme"
+        },
+        {
+          "value": "2199023255552",
+          "label": "Sepette pazar yeri kodu göster"
+        },
+        {
+          "value": "4398046511104",
+          "label": "Bayi tarafı sipariş detayında fiyatlar kdv dahil gözüksün"
+        },
+        {
+          "value": "8796093022208",
+          "label": "Cari hesaplarda ciro göster"
+        },
+        {
+          "value": "17592186044416",
+          "label": "Sepette ana ürünleri göster"
+        },
+        {
+          "value": "35184372088832",
+          "label": "Sepette iade sözleşmesi iste"
+        },
+        {
+          "value": "70368744177664",
+          "label": "Bakiye siparişte iptal talebi göster"
+        },
+        {
+          "value": "140737488355328",
+          "label": "Sipariş detayda kalan göster"
+        },
+        {
+          "value": "281474976710656",
+          "label": "Sepette kredi kartı ödemelerini tek çekim ve taksit olarak ayır"
+        },
+        {
+          "value": "562949953421312",
+          "label": "Siparişte Firma Etiket Yorumu Görünsün"
+        },
+        {
+          "value": "1125899906842624",
+          "label": "Temsilci İçin İç Not Alanı Göster"
+        },
+        {
+          "value": "2251799813685248",
+          "label": "Eski Temsilci Satış Raporu Sekmelerini Göster"
+        },
+        {
+          "value": "4503599627370496",
+          "label": "Cari hareketlerde işlem tipleri göster"
+        },
+        {
+          "value": "9007199254740992",
+          "label": "Cari hareketlerde gerçekleşen vade göster"
+        },
+        {
+          "value": "18014398509481984",
+          "label": "Desi bazlı kargo kullan"
+        },
+        {
+          "value": "36028797018963968",
+          "label": "Sepeti sıfırla göster"
+        },
+        {
+          "value": "72057594037927936",
+          "label": "Sepet ürünlerini kendi kurlarıyla göster"
+        },
+        {
+          "value": "144115188075855872",
+          "label": "Müşteri Temsilcisi indirim girdiğinde cari indirimini yok saysın"
+        }
+      ],
+      "legacyControlId": "ddlOrderParameter",
+      "knownMask": "288230376151711743"
+    },
+    {
+      "key": "PaymentDetailShow",
+      "group": "sepet",
+      "label": "Sepette ödeme detayını göster",
+      "control": "switch",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "legacyControlId": "ddlPaymentDetailShow"
+    },
+    {
+      "key": "CartProductVariationCodeShow",
+      "group": "sepet",
+      "label": "Sepette ürün varyasyon kodunu göster",
+      "control": "switch",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "legacyControlId": "ddlCartProductVariationCodeShow"
+    },
+    {
+      "key": "DeliveryDateShow",
+      "group": "sepet",
+      "label": "Siparişte teslimat tarihi al",
+      "control": "switch",
+      "sqlType": "bit",
+      "maxLength": 1,
+      "bitwise": false,
+      "legacyControlId": "chkDeliveryDateShow"
+    },
+    {
+      "key": "DeliveryAddress",
+      "group": "sepet",
+      "label": "\"Yeni teslimat adresi ekle\" seçeneğini göster",
+      "control": "switch",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "legacyControlId": "DDLDeliveryAddress"
+    },
+    {
+      "key": "SendDeliveryAddressIfDifferent",
+      "group": "sepet",
+      "label": "Fatura ve teslimat adresi aynıysa teslimat adresini boş kaydet",
+      "control": "switch",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "legacyControlId": "ddlSendDeliveryAddressIfDifferent"
+    },
+    {
+      "key": "AddCartAction",
+      "group": "sepet",
+      "label": "\"Ekle\" butonuna tıklanınca ürün detayını aç",
+      "control": "switch",
+      "sqlType": "bit",
+      "maxLength": 1,
+      "bitwise": false,
+      "legacyControlId": "chkAddCartAction"
+    },
+    {
+      "key": "DoNotSendMailToCustomer",
+      "group": "sepet",
+      "label": "Müşteriye sipariş maili gönderilmesin",
+      "control": "switch",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "legacyControlId": "chkDoNotSendMailToCustomer"
+    },
+    {
+      "key": "BillingAdressControl",
+      "group": "sepet",
+      "label": "Adres eklerken firma bilgileri eklensin",
+      "control": "switch",
+      "sqlType": "bit",
+      "maxLength": 1,
+      "bitwise": false,
+      "legacyControlId": "chkBillingAdress"
+    },
+    {
+      "key": "ParameterPayment",
+      "group": "odeme",
+      "label": "Ödeme parametreleri",
+      "control": "bitmask",
+      "sqlType": "smallint",
+      "maxLength": 2,
+      "bitwise": true,
+      "options": [
+        {
+          "value": "1",
+          "label": "Ödemede sözleşme onayı iste"
+        },
+        {
+          "value": "2",
+          "label": "E-Ödeme'de komisyon dahil"
+        },
+        {
+          "value": "4",
+          "label": "E-Ödeme'de komisyon seçimli"
+        },
+        {
+          "value": "8",
+          "label": "Vadesi geçmiş müşteriler ödemede taksit yapamasın"
+        },
+        {
+          "value": "32",
+          "label": "Online ödemede kur seçimi"
+        },
+        {
+          "value": "64",
+          "label": "Ödemede Pos Para Birimi Kullan"
+        },
+        {
+          "value": "128",
+          "label": "Online ödemede vadesi geçen borcu var ise taksit gösterme"
+        },
+        {
+          "value": "256",
+          "label": "Online ödemede Pos iskonto oranını gösterme"
+        },
+        {
+          "value": "512",
+          "label": "Online ödemede vadesi geçen göster"
+        },
+        {
+          "value": "1024",
+          "label": "Ödeme tiplerinde indirim gösterme"
+        },
+        {
+          "value": "2048",
+          "label": "Kredi kartı ödemelerini tek çekim ve taksit olarak ayır"
+        },
+        {
+          "value": "4096",
+          "label": "BankBinV2 yapısı aktif et"
+        },
+        {
+          "value": "8192",
+          "label": "Ödeme detayda komisyon göster"
+        },
+        {
+          "value": "16384",
+          "label": "Ödeme detayda hesaba geçen net tutar göster"
+        },
+        {
+          "value": "32768",
+          "label": "Firma Bazlı Ödeme Grubu Kullansın",
+          "unsupported": true
+        }
+      ],
+      "legacyControlId": "ddlPaymentParameter",
+      "knownMask": "32751"
+    },
+    {
+      "key": "CommissionType",
+      "group": "odeme",
+      "label": "E-Ödeme komisyonu",
+      "control": "select",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "0",
+          "label": "Seçilmedi"
+        },
+        {
+          "value": "1",
+          "label": "Sipariş verildiğinde komisyon farkı ürünlere yansıtılsın"
+        },
+        {
+          "value": "3",
+          "label": "Normal gösterim"
+        }
+      ],
+      "legacyControlId": "ddlCommissionType"
+    },
+    {
+      "key": "BankTableType",
+      "group": "odeme",
+      "label": "Banka taksit gösterimi",
+      "control": "select",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "1",
+          "label": "Normal Gösterim"
+        },
+        {
+          "value": "0",
+          "label": "Tablolu Gösterim"
+        }
+      ],
+      "legacyControlId": "ddlBankTableType"
+    },
+    {
+      "key": "PaymentLink",
+      "group": "odeme",
+      "label": "Farklı ödeme linki",
+      "control": "text",
+      "sqlType": "nvarchar",
+      "maxLength": 500,
+      "bitwise": false,
+      "legacyControlId": "txtPaymentLink",
+      "placeholder": "https://"
+    },
+    {
+      "key": "PaymentForAccountActivityShow",
+      "group": "odeme",
+      "label": "Cari hesaptan ödeme",
+      "control": "switch",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "legacyControlId": "ddlPaymentForAccountActivityShow"
+    },
+    {
+      "key": "LimitTracing",
+      "group": "odeme",
+      "label": "Cari limit takibi yapılsın",
+      "control": "switch",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "legacyControlId": "ddlCariLimitTracing"
+    },
+    {
+      "key": "LimitTracingInfo",
+      "group": "odeme",
+      "label": "Cari limit uyarısı göster",
+      "control": "switch",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "legacyControlId": "ddlCariLimitTracingInfo",
+      "dependsOn": {
+        "key": "LimitTracing",
+        "in": [
+          "1"
+        ],
+        "message": "Cari limit takibi kapalıyken uyarı gösterilmez."
+      }
+    },
+    {
+      "key": "ExpiryDate",
+      "group": "odeme",
+      "label": "Caride vade tarihini göster",
+      "control": "switch",
+      "sqlType": "bit",
+      "maxLength": 1,
+      "bitwise": false,
+      "legacyControlId": "ddlExpiryDate"
+    },
+    {
+      "key": "AccountActivityGenralCuurencyTableShow",
+      "group": "odeme",
+      "label": "Caride toplam bakiye tablosunu göster",
+      "control": "switch",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "legacyControlId": "ddlAccountActivityGenralCuurencyTableShow"
+    },
+    {
+      "key": "RowDescriptionShow",
+      "group": "odeme",
+      "label": "Cari hesap hareketlerinde satır detayı",
+      "control": "switch",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "legacyControlId": "ddlRowDescriptionShow"
+    },
+    {
+      "key": "ParameterAccount",
+      "group": "odeme",
+      "label": "Hesap (bakiye) parametreleri",
+      "control": "bitmask",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": true,
+      "options": [
+        {
+          "value": "1",
+          "label": "Limit gösterme"
+        },
+        {
+          "value": "2",
+          "label": "Toplam Bakiye Sipariş Gösterme"
+        },
+        {
+          "value": "4",
+          "label": "Toplam Borç Gösterme"
+        },
+        {
+          "value": "8",
+          "label": "Toplam Alacak Gösterme"
+        },
+        {
+          "value": "16",
+          "label": "Limit Kalan Bakiye Gösterme"
+        },
+        {
+          "value": "32",
+          "label": "Diğer Bakiye Gösterme"
+        },
+        {
+          "value": "64",
+          "label": "Hesap Bakiyesinde Toplam Siparişi Gösterme"
+        },
+        {
+          "value": "128",
+          "label": "Vadesi geçen gösterme"
+        },
+        {
+          "value": "256",
+          "label": "Fiyat Tipine Göre Hesap Numarası Göster"
+        },
+        {
+          "value": "512",
+          "label": "Üst menüde bakiye gösterme"
+        }
+      ],
+      "legacyControlId": "ddlParameterAccount",
+      "knownMask": "1023"
+    },
+    {
+      "key": "BonusShow",
+      "group": "odeme",
+      "label": "Puan göster",
+      "control": "switch",
+      "sqlType": "bit",
+      "maxLength": 1,
+      "bitwise": false,
+      "legacyControlId": "ddlBonusShow"
+    },
+    {
+      "key": "UseCurrencyType",
+      "group": "fiyat",
+      "label": "Döviz kuru",
+      "control": "select",
+      "sqlType": "bit",
+      "maxLength": 1,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "1",
+          "label": "Otomatik"
+        },
+        {
+          "value": "0",
+          "label": "Elle ayarla"
+        }
+      ],
+      "legacyControlId": "ddlCurrencyType"
+    },
+    {
+      "key": "CurrencyPriceType",
+      "group": "fiyat",
+      "label": "Döviz kuru fiyatı",
+      "control": "select",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "1",
+          "label": "Efektif satıştan alsın"
+        },
+        {
+          "value": "2",
+          "label": "Döviz satıştan alsın"
+        }
+      ],
+      "legacyControlId": "ddlCurrencyPriceType"
+    },
+    {
+      "key": "CurrencyProduct",
+      "group": "fiyat",
+      "label": "Ürün para birimi",
+      "control": "select",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "-1",
+          "label": "Cari Fiyat Tipine Göre Göster"
+        },
+        {
+          "value": "0",
+          "label": "Değiştirme"
+        },
+        {
+          "value": "1",
+          "label": "TL"
+        },
+        {
+          "value": "2",
+          "label": "$"
+        },
+        {
+          "value": "3",
+          "label": "€"
+        },
+        {
+          "value": "4",
+          "label": "GBP"
+        },
+        {
+          "value": "5",
+          "label": "SEK"
+        },
+        {
+          "value": "6",
+          "label": "DKK"
+        },
+        {
+          "value": "7",
+          "label": "CHD"
+        },
+        {
+          "value": "8",
+          "label": "¥"
+        },
+        {
+          "value": "9",
+          "label": "SAR"
+        },
+        {
+          "value": "10",
+          "label": "KWD"
+        },
+        {
+          "value": "11",
+          "label": "AUD"
+        },
+        {
+          "value": "12",
+          "label": "IRR"
+        },
+        {
+          "value": "13",
+          "label": "BGN"
+        },
+        {
+          "value": "14",
+          "label": "lei"
+        }
+      ],
+      "legacyControlId": "ddlProductCurrency"
+    },
+    {
+      "key": "CurrencyPos",
+      "group": "fiyat",
+      "label": "POS para birimi",
+      "control": "select",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "-1",
+          "label": "Cari Fiyat Tipine Göre Göster"
+        },
+        {
+          "value": "0",
+          "label": "Değiştirme"
+        },
+        {
+          "value": "1",
+          "label": "TL"
+        },
+        {
+          "value": "2",
+          "label": "$"
+        },
+        {
+          "value": "3",
+          "label": "€"
+        },
+        {
+          "value": "4",
+          "label": "GBP"
+        },
+        {
+          "value": "5",
+          "label": "SEK"
+        },
+        {
+          "value": "6",
+          "label": "DKK"
+        },
+        {
+          "value": "7",
+          "label": "CHD"
+        },
+        {
+          "value": "8",
+          "label": "¥"
+        },
+        {
+          "value": "9",
+          "label": "SAR"
+        },
+        {
+          "value": "10",
+          "label": "KWD"
+        },
+        {
+          "value": "11",
+          "label": "AUD"
+        },
+        {
+          "value": "12",
+          "label": "IRR"
+        },
+        {
+          "value": "13",
+          "label": "BGN"
+        },
+        {
+          "value": "14",
+          "label": "lei"
+        }
+      ],
+      "legacyControlId": "ddlPosCurrency"
+    },
+    {
+      "key": "IntegrationCurrencyID",
+      "group": "fiyat",
+      "label": "Sipariş entegrasyon aktarımında döviz tipi",
+      "control": "select",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "0",
+          "label": "Seçilmedi"
+        },
+        {
+          "value": "1",
+          "label": "TL"
+        },
+        {
+          "value": "2",
+          "label": "$"
+        },
+        {
+          "value": "3",
+          "label": "€"
+        },
+        {
+          "value": "4",
+          "label": "GBP"
+        },
+        {
+          "value": "5",
+          "label": "SEK"
+        },
+        {
+          "value": "6",
+          "label": "DKK"
+        },
+        {
+          "value": "7",
+          "label": "CHD"
+        },
+        {
+          "value": "8",
+          "label": "¥"
+        },
+        {
+          "value": "9",
+          "label": "SAR"
+        },
+        {
+          "value": "10",
+          "label": "KWD"
+        },
+        {
+          "value": "11",
+          "label": "AUD"
+        },
+        {
+          "value": "12",
+          "label": "IRR"
+        },
+        {
+          "value": "13",
+          "label": "BGN"
+        },
+        {
+          "value": "14",
+          "label": "lei"
+        }
+      ],
+      "legacyControlId": "ddIntegrationCurrency"
+    },
+    {
+      "key": "DiscountType",
+      "group": "fiyat",
+      "label": "İndirim tipi",
+      "control": "select",
+      "sqlType": "nvarchar",
+      "maxLength": 10,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "A",
+          "label": "Normal"
+        },
+        {
+          "value": "P",
+          "label": "Ürüne göre"
+        },
+        {
+          "value": "C",
+          "label": "Firmaya göre"
+        }
+      ],
+      "description": "Veritabanında A / P / C olarak saklanıyor (eski ekranın HTML'inde seçenek değerleri tırnaklı: 'A').",
+      "legacyControlId": "ddlDiscountType"
+    },
+    {
+      "key": "DiscountTypeInvoice",
+      "group": "fiyat",
+      "label": "Fatura indirim tipi",
+      "control": "select",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "0",
+          "label": "Tutar"
+        },
+        {
+          "value": "1",
+          "label": "Oran"
+        }
+      ],
+      "legacyControlId": "ddldiscountTypeInvoice"
+    },
+    {
+      "key": "SpecialDiscount",
+      "group": "fiyat",
+      "label": "Müşteri temsilcisi indirim yetkisi",
+      "control": "select",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "0",
+          "label": "Gösterme"
+        },
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "Müşteri temsilcisi bazında belirle"
+        }
+      ],
+      "legacyControlId": "ddlSpecialDiscount"
+    },
+    {
+      "key": "ParameterLogin",
+      "group": "basvuru",
+      "label": "Başvuru formu alanları",
+      "control": "bitmask",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": true,
+      "options": [
+        {
+          "value": "1",
+          "label": "Adı"
+        },
+        {
+          "value": "2",
+          "label": "Soyadı"
+        },
+        {
+          "value": "4",
+          "label": "Firma"
+        },
+        {
+          "value": "8",
+          "label": "Telefon"
+        },
+        {
+          "value": "16",
+          "label": "Vergi dairesi"
+        },
+        {
+          "value": "32",
+          "label": "Vergi numarası"
+        },
+        {
+          "value": "64",
+          "label": "İl"
+        },
+        {
+          "value": "128",
+          "label": "İlçe"
+        },
+        {
+          "value": "256",
+          "label": "Adres"
+        },
+        {
+          "value": "512",
+          "label": "Email"
+        },
+        {
+          "value": "1024",
+          "label": "Bayi Web Adresi"
+        },
+        {
+          "value": "2048",
+          "label": "TC Kimlik No"
+        },
+        {
+          "value": "4096",
+          "label": "Başvuruda Sözleşme Onayı"
+        },
+        {
+          "value": "8192",
+          "label": "Yeni Üyelik Yazısı"
+        },
+        {
+          "value": "16384",
+          "label": "Üyelik butonu gizle"
+        },
+        {
+          "value": "32768",
+          "label": "Üyeliksiz Alışverişi Göster"
+        },
+        {
+          "value": "65536",
+          "label": "Alt bayi oluştururken menü ayarları gözükmesin"
+        },
+        {
+          "value": "131072",
+          "label": "Posta Kodu"
+        },
+        {
+          "value": "262144",
+          "label": "Açıklama"
+        },
+        {
+          "value": "524288",
+          "label": "Şifre"
+        },
+        {
+          "value": "1048576",
+          "label": "Bireysel"
+        },
+        {
+          "value": "2097152",
+          "label": "Adres eklemede teslimat ve fatura adresi seçimi göster"
+        },
+        {
+          "value": "4194304",
+          "label": "Dosya yükle göster"
+        },
+        {
+          "value": "8388608",
+          "label": "Mobil telefon"
+        },
+        {
+          "value": "16777216",
+          "label": "Üye olan firmanın promosyon kullanımı aktif olsun"
+        },
+        {
+          "value": "33554432",
+          "label": "Üye olan firmanın stok gösterimi kapalı olsun"
+        },
+        {
+          "value": "67108864",
+          "label": "Üyelikte aktivasyon linki oluştur"
+        },
+        {
+          "value": "134217728",
+          "label": "Üye olan firmanın sipariş tamamlama butonu kapalı olsun"
+        },
+        {
+          "value": "268435456",
+          "label": "Üye olan firmanın fiyatı kapalı olsun"
+        },
+        {
+          "value": "536870912",
+          "label": "Üye olan firmanın piyasa fiyatı kapalı olsun"
+        }
+      ],
+      "legacyControlId": "ddlParameterLogin",
+      "knownMask": "1073741823"
+    },
+    {
+      "key": "ParameterLoginMenu",
+      "group": "basvuru",
+      "label": "Başvuru formu menü gösterimi",
+      "control": "bitmask",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": true,
+      "options": [
+        {
+          "value": "1",
+          "label": "Adı"
+        },
+        {
+          "value": "2",
+          "label": "Soyadı"
+        },
+        {
+          "value": "4",
+          "label": "Firma"
+        },
+        {
+          "value": "8",
+          "label": "Telefon"
+        },
+        {
+          "value": "16",
+          "label": "Vergi dairesi"
+        },
+        {
+          "value": "32",
+          "label": "Vergi numarası"
+        },
+        {
+          "value": "64",
+          "label": "İl"
+        },
+        {
+          "value": "128",
+          "label": "İlçe"
+        },
+        {
+          "value": "256",
+          "label": "Adres"
+        },
+        {
+          "value": "512",
+          "label": "Email"
+        },
+        {
+          "value": "1024",
+          "label": "Bayi Web Adresi"
+        },
+        {
+          "value": "2048",
+          "label": "TC Kimlik No"
+        },
+        {
+          "value": "4096",
+          "label": "Başvuruda Sözleşme Onayı"
+        },
+        {
+          "value": "8192",
+          "label": "Vergi Onay Kodu"
+        },
+        {
+          "value": "16384",
+          "label": "Üyelik butonu gizle"
+        },
+        {
+          "value": "32768",
+          "label": "Bireysel-kurumsal seçimi"
+        },
+        {
+          "value": "65536",
+          "label": "Telefon numarası"
+        },
+        {
+          "value": "131072",
+          "label": "Adres"
+        },
+        {
+          "value": "262144",
+          "label": "Açıklama"
+        }
+      ],
+      "legacyControlId": "ddlParameterLoginMenu",
+      "knownMask": "524287"
+    },
+    {
+      "key": "RegisterFormUrl",
+      "group": "basvuru",
+      "label": "Harici kayıt formu linki",
+      "control": "text",
+      "sqlType": "nvarchar",
+      "maxLength": -1,
+      "bitwise": false,
+      "description": "Doluysa \"Yeni üyelik\" butonu bu adrese yönlendirir.",
+      "legacyControlId": "txtRegisterFormUrl",
+      "placeholder": "https://"
+    },
+    {
+      "key": "UseCustomerCodeForLogin",
+      "group": "basvuru",
+      "label": "Girişte müşteri kodu iste",
+      "control": "switch",
+      "sqlType": "bit",
+      "maxLength": 1,
+      "bitwise": false,
+      "legacyControlId": "chkCustomerCodeForLogin"
+    },
+    {
+      "key": "LoginWithExpiry",
+      "group": "basvuru",
+      "label": "İlgili vade ile giriş yap",
+      "control": "switch",
+      "sqlType": "bit",
+      "maxLength": 1,
+      "bitwise": false,
+      "legacyControlId": "chkLoginWithExpiry"
+    },
+    {
+      "key": "Integrated",
+      "group": "entegrasyon",
+      "label": "ERP entegrasyonu var",
+      "control": "switch",
+      "sqlType": "bit",
+      "maxLength": 1,
+      "bitwise": false,
+      "legacyControlId": "ddlintegrated"
+    },
+    {
+      "key": "ParameterIntegration",
+      "group": "entegrasyon",
+      "label": "Entegrasyon parametreleri",
+      "control": "bitmask",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": true,
+      "options": [
+        {
+          "value": "1",
+          "label": "Çapraz iskonto manuel tanımlanacak"
+        },
+        {
+          "value": "2",
+          "label": "Müşteri grubu manuel belirlenecek"
+        },
+        {
+          "value": "4",
+          "label": "Sipariş aktarımında alt bayi siparişini ana bayi olarak gönder"
+        },
+        {
+          "value": "8",
+          "label": "Cari aktarımında otomatik etiket güncelle"
+        }
+      ],
+      "legacyControlId": "ddlParameterIntegration",
+      "knownMask": "15"
+    },
+    {
+      "key": "UseDesktopApi",
+      "group": "entegrasyon",
+      "label": "Masaüstü uygulaması kullan",
+      "control": "switch",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "legacyControlId": "ddlUseDesktopApi"
+    },
+    {
+      "key": "UseMd5Encryption",
+      "group": "entegrasyon",
+      "label": "Şifreleme",
+      "control": "select",
+      "sqlType": "nvarchar",
+      "maxLength": 25,
+      "bitwise": false,
+      "options": [
+        {
+          "value": "0",
+          "label": "Normal"
+        },
+        {
+          "value": "1",
+          "label": "MD5"
+        }
+      ],
+      "description": "Akınsoft veya Vue (yeni yapı) kullananlar MD5, eski Dealer yapısı Normal seçmeli.",
+      "legacyControlId": "ddlUseMd5Encryption"
+    },
+    {
+      "key": "DealerAutHorizePersonel",
+      "group": "entegrasyon",
+      "label": "reCAPTCHA kodu",
+      "control": "text",
+      "sqlType": "nvarchar",
+      "maxLength": 450,
+      "bitwise": false,
+      "description": "Eski ekranda \"Recaptcha Kodu\" etiketiyle bu kolona (DealerAutHorizePersonel – yetkili kişi) yazılıyor.",
+      "legacyControlId": "txtBayiYetkiliKisi"
+    },
+    {
+      "key": "GoogleAdWordsReMarketingCode",
+      "group": "entegrasyon",
+      "label": "Takip kodu – NoScript",
+      "control": "textarea",
+      "sqlType": "nvarchar",
+      "maxLength": -1,
+      "bitwise": false,
+      "legacyControlId": "txtGoogleAdWordsReMarketingCode"
+    },
+    {
+      "key": "GoogleAnalysticScript",
+      "group": "entegrasyon",
+      "label": "Takip kodu – Meta",
+      "control": "textarea",
+      "sqlType": "nvarchar",
+      "maxLength": -1,
+      "bitwise": false,
+      "legacyControlId": "txtGoogleAnalysticScript"
+    },
+    {
+      "key": "GoogleAnalysticProfileID",
+      "group": "entegrasyon",
+      "label": "Takip kodu – Script",
+      "control": "textarea",
+      "sqlType": "nvarchar",
+      "maxLength": -1,
+      "bitwise": false,
+      "legacyControlId": "txtGoogleAnalysticProfileID"
+    },
+    {
+      "key": "ParameterAdmin",
+      "group": "admin",
+      "label": "Admin parametreleri",
+      "control": "bitmask",
+      "sqlType": "bigint",
+      "maxLength": 8,
+      "bitwise": true,
+      "options": [
+        {
+          "value": "1",
+          "label": "Teknik Ayarlarda Teklif Modülü Göster"
+        },
+        {
+          "value": "2",
+          "label": "Fiyat Tipinde KDV Muaf Göster"
+        },
+        {
+          "value": "4",
+          "label": "Pos Yönetiminde Taksit Limiti Göster"
+        },
+        {
+          "value": "8",
+          "label": "Firma Bazlı Gizleme"
+        },
+        {
+          "value": "16",
+          "label": "Pos Yönetiminde Firma Bazlı Taksit Oranları Göster"
+        },
+        {
+          "value": "32",
+          "label": "Sipariş Excel'e Aktar Butonunu Göster"
+        },
+        {
+          "value": "64",
+          "label": "Bakiye Siparişi Excel'e Aktar Butonunu Göster"
+        },
+        {
+          "value": "128",
+          "label": "Sipariş Detay Pdf'e aktar Butonunu göster"
+        },
+        {
+          "value": "256",
+          "label": "Sepet'de Cariye tıklandığında Hesap Bakiyesinin Gösterilmesi"
+        },
+        {
+          "value": "512",
+          "label": "Cari Haraketler Detay PDF'e aktar Butonunu göster"
+        },
+        {
+          "value": "1024",
+          "label": "Bölge Bazlı Depo Gösterimi"
+        },
+        {
+          "value": "2048",
+          "label": "SQL Veri Yapısı seçeneğini göster"
+        },
+        {
+          "value": "4096",
+          "label": "Xml Dışa Aktar: Güncelleme Saati seçeneği"
+        },
+        {
+          "value": "8192",
+          "label": "Raporlarda hizmet siparişlerini göster"
+        },
+        {
+          "value": "16384",
+          "label": "Müşteri Temsilcisi Seçimi (Kullanıcılar)"
+        },
+        {
+          "value": "32768",
+          "label": "Müşteri Temsilcisi Seçimi (Müşteri Temsilcileri)"
+        },
+        {
+          "value": "65536",
+          "label": "Firma Ekleme: Gösterilecek Firma Parametreleri Seçimi"
+        },
+        {
+          "value": "131072",
+          "label": "Ödeme Parametreleri: Vadesi geçmiş müşteriler ödemede taksit yapamasın"
+        },
+        {
+          "value": "262144",
+          "label": "Alt Bayi Parametre"
+        },
+        {
+          "value": "524288",
+          "label": "Firma bazında marka gizleme"
+        },
+        {
+          "value": "1048576",
+          "label": "Ürün Gizle"
+        },
+        {
+          "value": "2097152",
+          "label": "Stok 0'sa \"Tedarik Edilebilir\" Olarak Göster"
+        },
+        {
+          "value": "4194304",
+          "label": "Depo Gizleme"
+        },
+        {
+          "value": "8388608",
+          "label": "Firma: Cari Takip Dövizi Gösterimi"
+        },
+        {
+          "value": "16777216",
+          "label": "Sepette Kategori Göster"
+        },
+        {
+          "value": "33554432",
+          "label": "Dışa Aktarım Json"
+        },
+        {
+          "value": "67108864",
+          "label": "Hesap limit göster"
+        },
+        {
+          "value": "134217728",
+          "label": "Tahsilat girişi göster"
+        },
+        {
+          "value": "268435456",
+          "label": "Siparişte müşteri temsilcisi kodu gönder"
+        },
+        {
+          "value": "536870912",
+          "label": "Ürün Bazında Kampanya Gösterme"
+        },
+        {
+          "value": "1073741824",
+          "label": "Çapraz iskontoda ürün iskonto 2 kullan"
+        },
+        {
+          "value": "2147483648",
+          "label": "Firma bazında marka iskonto yapısı"
+        },
+        {
+          "value": "4294967296",
+          "label": "Sipariş detayda iade butonu"
+        },
+        {
+          "value": "8589934592",
+          "label": "Müşteri Temsilcisi Yalnız Cari Depoları Görsün"
+        },
+        {
+          "value": "17179869184",
+          "label": "Depoya göre sepete ekle"
+        },
+        {
+          "value": "34359738368",
+          "label": "Depo bazında sepete ekle göster"
+        },
+        {
+          "value": "68719476736",
+          "label": "Gelişmiş Çapraz İskonto (Ödeme Tipine Göre)"
+        },
+        {
+          "value": "137438953472",
+          "label": "Cari Bazlı Banner Popup Gösterimi"
+        },
+        {
+          "value": "274877906944",
+          "label": "Entegrasyonda Kampanyalı Fiyat Güncelle"
+        },
+        {
+          "value": "549755813888",
+          "label": "Ek alan 2'yi sadece müşteri temsilcisi görsün"
+        },
+        {
+          "value": "1099511627776",
+          "label": "B4B Tek fiyat tipli varsayılan ürün gösterimi"
+        },
+        {
+          "value": "2199023255552",
+          "label": "B4B Birden fazla fiyat tipli varsayılan ürün gösterimi"
+        },
+        {
+          "value": "4398046511104",
+          "label": "Platform > Ürünler > İlgili Ürünler Gösterilsin"
+        },
+        {
+          "value": "8796093022208",
+          "label": "Teknik ayarlarda indirim tipi gösterilsin"
+        },
+        {
+          "value": "17592186044416",
+          "label": "Tüm carilerin ürün sipariş geçmişini temsilcilere göster"
+        },
+        {
+          "value": "35184372088832",
+          "label": "Vade Gün Taksit Kısıtlama"
+        },
+        {
+          "value": "70368744177664",
+          "label": "Vadesi geçen borcu olan sipariş gönderemesin"
+        },
+        {
+          "value": "140737488355328",
+          "label": "Girişi Bayi Girişi ve Üye Girişi olarak ayır"
+        },
+        {
+          "value": "281474976710656",
+          "label": "Fatura Görseli Göster (GİB)"
+        },
+        {
+          "value": "562949953421312",
+          "label": "Cari Hareketlerde DBS işlemleri göster"
+        },
+        {
+          "value": "1125899906842624",
+          "label": "Online ödemede hesap bakiyesi göster"
+        },
+        {
+          "value": "2251799813685248",
+          "label": "Sipariş onaylandığında otomatik cari hareketlere eklensin"
+        },
+        {
+          "value": "4503599627370496",
+          "label": "Ön sipariş kullan"
+        },
+        {
+          "value": "9007199254740992",
+          "label": "Sipariş tamamla devre dışı"
+        },
+        {
+          "value": "18014398509481984",
+          "label": "Sepette ürün arama göster"
+        },
+        {
+          "value": "36028797018963968",
+          "label": "Standart Depo Bölme"
+        },
+        {
+          "value": "72057594037927936",
+          "label": "Gelişmiş Depo Bölme"
+        },
+        {
+          "value": "144115188075855872",
+          "label": "Bölge bazlı banner resmi gösterimi"
+        },
+        {
+          "value": "288230376151711744",
+          "label": "Ürün detayda seo etiketi kullan"
+        },
+        {
+          "value": "576460752303423488",
+          "label": "Temsilci girişini kapat"
+        },
+        {
+          "value": "1152921504606846976",
+          "label": "Online ödeme temsilci için hep açık olsun"
+        },
+        {
+          "value": "2305843009213693952",
+          "label": "Avrupa için Fatura Tasarımı"
+        },
+        {
+          "value": "4611686018427387904",
+          "label": "Periyotlu siparişte başlangıç ve bitiş tarihi gözüksün"
+        }
+      ],
+      "legacyControlId": "ddlParameterAdmin",
+      "knownMask": "9223372036854775807"
+    },
+    {
+      "key": "SubDealerShow",
+      "group": "admin",
+      "label": "Bayi – alt bayi özelliği",
+      "control": "switch",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": false,
+      "legacyControlId": "ddSubDealerShow"
+    },
+    {
+      "key": "ParameterModules",
+      "group": "admin",
+      "label": "Parametrik modüller",
+      "control": "bitmask",
+      "sqlType": "int",
+      "maxLength": 4,
+      "bitwise": true,
+      "options": [],
+      "description": "Eski ekranda bu listenin hiç seçeneği yok.",
+      "legacyControlId": "ddlParameterModules",
+      "knownMask": "0"
+    }
+  ],
+  "notInDatabase": [
+    {
+      "legacyControlId": "ddlParameterProductDetailNotLogin2",
+      "label": "Ürün Detay Parametresi 2 (B2C - Oturum Kapalı)"
+    },
+    {
+      "legacyControlId": "ddlParameterMenu2",
+      "label": "Menü Gösterimi 2"
+    },
+    {
+      "legacyControlId": "chkWhatsAppOrderNotification",
+      "label": "WhatsApp Sipariş Bildirimi Gönder"
+    },
+    {
+      "legacyControlId": "FavoriteIconPosition",
+      "label": "Favori İkonu Pozisyonu (Sol/Sağ, Üst/Alt)"
+    }
+  ]
+}
