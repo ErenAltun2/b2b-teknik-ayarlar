@@ -1,0 +1,11 @@
+@B2BStore.Settings.Api_HostAddress = http://localhost:5098
+
+GET {{B2BStore.Settings.Api_HostAddress}}/openapi/v1.json
+Accept: application/json
+
+###
+
+GET {{B2BStore.Settings.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

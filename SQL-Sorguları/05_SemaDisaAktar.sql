@@ -9,7 +9,7 @@ SELECT  OBJECT_NAME(c.object_id)                    AS Tablo,
         CASE WHEN t.name IN ('nvarchar','nchar') AND c.max_length > 0
              THEN c.max_length / 2 ELSE c.max_length END AS Uzunluk,
         c.is_nullable                               AS NullOlabilir,
-        c.is_identity                               AS Identity,
+        c.is_identity                               AS OtomatikArtan,
         dc.definition                               AS Varsayilan,
         CAST(ep.value AS nvarchar(4000))            AS Aciklama
 FROM sys.columns c

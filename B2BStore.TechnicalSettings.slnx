@@ -1,6 +1,3 @@
 <Solution>
-  <Folder Name="/backend/">
-    <Project Path="backend/B2BStore.TechnicalSettings.Api/B2BStore.TechnicalSettings.Api.csproj" />
-    <Project Path="backend/B2BStore.TechnicalSettings.Tests/B2BStore.TechnicalSettings.Tests.csproj" />
-  </Folder>
+  <Project Path="backend/B2BStore.Settings.Api/B2BStore.Settings.Api.csproj" Id="625b845e-5a61-4ecf-b387-d7a5c481095b" />
 </Solution>

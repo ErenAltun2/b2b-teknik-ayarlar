@@ -12,7 +12,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: '../backend/B2BStore.TechnicalSettings.Api/wwwroot',
+    outDir: '../backend/B2BStore.Settings.Api/wwwroot',
     emptyOutDir: true,
   },
 })

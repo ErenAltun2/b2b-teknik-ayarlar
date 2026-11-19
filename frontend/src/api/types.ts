@@ -58,7 +58,6 @@ export type SettingValues = Record<string, string | null>
 
 export interface SettingsResponse {
   row: number
-  rowCount: number
   values: SettingValues
 }
 

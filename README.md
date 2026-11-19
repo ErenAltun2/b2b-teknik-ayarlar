@@ -9,9 +9,8 @@ Mevcut `DealerSettings` tablosunun yapısı, parametrelerin anlamları ve veri k
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript&logoColor=white)
 ![.NET](https://img.shields.io/badge/.NET-11-512bd4?logo=dotnet&logoColor=white)
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-2022-cc2927?logo=microsoftsqlserver&logoColor=white)
-![Tests](https://img.shields.io/badge/tests-8%20passed-1e8e4f)
 
-> 🔗 **Canlı demo:** _(eklenecek)_ · 🎬 **Ekran kaydı:** _(eklenecek)_
+> 🔗 **Canlı demo:** https://b2b-teknik-ayarlar.runasp.net · 🎬 **Ekran kaydı:** _(eklenecek)_
 
 ![Yeni Teknik Ayarlar ekranı](docs/screenshots/yeni-ekran.png)
 
@@ -24,6 +23,7 @@ Mevcut `DealerSettings` tablosunun yapısı, parametrelerin anlamları ve veri k
 - [Mimari](#mimari)
 - [Kurulum ve çalıştırma](#kurulum-ve-çalıştırma)
 - [API](#api)
+- [Güvenlik: SQL injection'a karşı iki katman](#güvenlik-sql-injectiona-karşı-iki-katman)
 - [Bitwise parametreler nasıl kaydediliyor?](#bitwise-parametreler-nasıl-kaydediliyor)
 - [Testler](#testler)
 - [Proje yapısı](#proje-yapısı)
@@ -33,13 +33,13 @@ Mevcut `DealerSettings` tablosunun yapısı, parametrelerin anlamları ve veri k
 
 ## Özellikler
 
-- **93 parametre, 12 anlaşılır kategori** – Genel, Görünüm & Tasarım, Menü, Ürün Listeleme & Stok, Ürün Detay, Arama & Filtre, Sepet & Sipariş, Ödeme & Cari, Fiyat & Döviz, Başvuru Formu, Entegrasyon, Admin
-- **Arama** – ayar adı, açıklama, seçenek ve kolon adında; **"sadece değişenler"** filtresi
-- **Doğru bileşen, doğru ayar** – açık/kapalı anahtarlar, açılır listeler, çoklu seçim (bitwise), sayı, metin, renk
+- **93 parametre, 12 anlaşılır kategori**: Genel, Görünüm & Tasarım, Menü, Ürün Listeleme & Stok, Ürün Detay, Arama & Filtre, Sepet & Sipariş, Ödeme & Cari, Fiyat & Döviz, Başvuru Formu, Entegrasyon, Admin
+- **Arama**: ayar adı, açıklama, seçenek ve kolon adında arama; **"sadece değişenler"** filtresi
+- **Her ayara uygun bileşen**: açık/kapalı anahtarlar, açılır listeler, çoklu seçim (bitwise), sayı, metin, renk
 - **Açıklama metinleri** ve **ilişkili ayar uyarıları** ("Bu ayar şuna bağlı → ilgili ayara git")
-- **Kaydetmeden önce değişiklik özeti** – eski → yeni değer; bitwise ayarlarda eklenen / kaldırılan seçenekler
-- **Güvenli kayıt** – sadece değişen ayarlar, bitwise'da sadece değişen bitler; transaction + satır kilidi
-- **Sunucu tarafı doğrulama** – tip, aralık, seçenek listesi, kolona sığmayan bitler; ayar bazında hata mesajları (RFC 7807)
+- **Kaydetmeden önce değişiklik özeti**: eski → yeni değer; bitwise ayarlarda eklenen ve kaldırılan seçenekler
+- **Sadece değişenler gönderilir**: bitwise ayarlarda yalnızca değişen bitler gider, diğer bitler korunur
+- **Sunucu tarafı doğrulama**: katalogda tanımlı 5 kural (beyaz liste, bitwise, seçenek, açık/kapalı, uzunluk ve sayı); hatalar standart ProblemDetails (RFC 7807) biçiminde döner
 - Değişiklik işaretleri, tek tek geri alma, `Ctrl + S`, mobil uyumlu yerleşim
 
 ![Kaydetmeden önce değişiklik özeti](docs/screenshots/degisiklik-ozeti.jpg)
@@ -51,26 +51,30 @@ Mevcut `DealerSettings` tablosunun yapısı, parametrelerin anlamları ve veri k
 | ~95 ayar tek sayfada | 12 kategori + arama |
 | Açıklama yok, ters mantıklı değerler ("1 = Hayır") | Anlaşılır başlıklar, yardım metinleri, açık/kapalı anahtarlar |
 | Neyin değiştiği görünmüyor | Değişen ayarlar işaretli, geri alınabilir, kayıttan önce özet |
-| Bütün form gönderiliyor | Sadece değişen ayarlar / bitler gönderiliyor |
+| Bütün form gönderiliyor | Sadece değişen ayarlar ve bitler gönderiliyor |
 | Veritabanı kolonuna sığmayan seçenekler seçilebiliyor | Bu seçenekler devre dışı ve uyarılı; API de reddediyor |
 
 ## Mimari
 
 ```
-frontend/                         Vue 3 + TypeScript + Vite
+frontend/                          Vue 3 + TypeScript + Vite
    │  fetch /api/settings
    ▼
-backend/B2BStore.TechnicalSettings.Api   .NET 11 Web API
-   ├─ Controllers/    HTTP katmanı (endpoint'ler)
-   ├─ Services/       iş kuralları, doğrulama, bitwise birleştirme
-   ├─ Repositories/   SQL (Dapper), transaction, satır kilitleme
-   ├─ Models/         DTO'lar ve hata sınıfları
-   └─ Catalog/        settings-catalog.json – 93 ayarın tanımı
+backend/B2BStore.Settings.Api      .NET 11 Web API
+   ├─ Controllers/    HTTP katmanı: isteği alır, Service'i çağırır, 200 / 400 / 404 döner
+   ├─ Services/       iş kuralları: katalogla doğrulama, kaydetme akışı, değişenleri bulma
+   ├─ Repositories/   SQL (Dapper): okuma ve tek UPDATE ile kaydetme
+   ├─ Dtos/           frontend ile API arasındaki JSON şekilleri
+   └─ Catalog/        settings-catalog.json: 93 ayarın tanımı
    ▼
 SQL Server 2022 – dbo.DealerSettings
 ```
 
-Ekran **katalog tabanlı** çalışır: `settings-catalog.json` her ayarın grubunu, etiketini, kolonunu, SQL tipini, kontrol tipini, seçeneklerini ve bit değerlerini tanımlar. Hem arayüz hem doğrulama bu katalogdan beslenir; katalogda olmayan bir kolon okunamaz ve güncellenemez.
+Katmanlar tek yönlü konuşur: **Controller → Service → Repository**. Controller veritabanını, Repository iş kurallarını bilmez. Bağımlılıklar `Program.cs`'te kaydedilir; katalog **Singleton** (uygulama açılırken bir kez yüklenir), Repository ve Service **Scoped** (her HTTP isteğinde yeni).
+
+**Neden Dapper?** `DealerSettings` tablosunda birincil anahtar yok ve her kayıtta farklı kolonlar güncelleniyor. EF Core anahtarsız bir tabloyu güncelleyemez; Dapper ile SQL'i kendimiz yazıp sonucu C# nesnelerine çeviriyoruz.
+
+Ekran **katalog tabanlı** çalışır: `settings-catalog.json` her ayarın grubunu, etiketini, kolonunu, SQL tipini, kontrol tipini, seçeneklerini ve bit değerlerini tanımlar. Aynı katalog frontend'de **neyin çizileceğini**, backend'de **neyin kabul edileceğini** belirler. Kontroller ayarın türüne göre yazıldığı için kataloğa yeni bir ayar eklemek kod değişikliği gerektirmez.
 
 ## Kurulum ve çalıştırma
 
@@ -108,7 +112,7 @@ WITH MOVE N'store5'     TO N'/var/opt/mssql/data/store5.mdf',
 
 ### 2. Backend
 
-`backend/B2BStore.TechnicalSettings.Api/appsettings.Development.json` dosyasını oluşturun:
+`backend/B2BStore.Settings.Api/appsettings.Development.json` dosyasını oluşturun:
 
 ```json
 {
@@ -119,14 +123,14 @@ WITH MOVE N'store5'     TO N'/var/opt/mssql/data/store5.mdf',
 ```
 
 ```powershell
-cd backend/B2BStore.TechnicalSettings.Api
+cd backend/B2BStore.Settings.Api
 dotnet run
 ```
 
 - API: `http://localhost:5080`
-- API dokümantasyonu: `http://localhost:5080/scalar`
+- OpenAPI dokümanı (geliştirme modunda): `http://localhost:5080/openapi/v1.json`
 
-Visual Studio ile: `B2BStore.TechnicalSettings.slnx` → **F5**
+Visual Studio ile: `B2BStore.TechnicalSettings.slnx` → profil **http** → **F5**
 
 ### 3. Frontend
 
@@ -136,82 +140,122 @@ npm install
 npm run dev
 ```
 
-Uygulama: `http://localhost:5173` (`/api` istekleri otomatik olarak API'ye yönlendirilir).
+Uygulama: `http://localhost:5173` (`/api` istekleri otomatik olarak `localhost:5080`'e yönlendirilir).
 
 ### Tek servis olarak yayın
 
 ```powershell
-cd frontend && npm run build        # çıktı: backend/.../wwwroot
-cd ../backend/B2BStore.TechnicalSettings.Api
+cd frontend
+npm run build                      # çıktı: backend/B2BStore.Settings.Api/wwwroot
+cd ../backend/B2BStore.Settings.Api
 dotnet publish -c Release
 ```
 
-API, derlenmiş Vue uygulamasını kendisi sunar.
+API, derlenmiş Vue uygulamasını `wwwroot` klasöründen kendisi sunar. Canlı ortamın bağlantı bilgisi `appsettings.Production.json` dosyasındadır (repoya dahil değildir).
 
 ## API
 
 | Metot | Adres | Açıklama |
 |---|---|---|
 | `GET` | `/api/settings/catalog` | Ayar tanımları (ekran bu katalogdan oluşur) |
-| `GET` | `/api/settings/rows` | DealerSettings satırları |
+| `GET` | `/api/settings/rows` | DealerSettings satırlarının kısa özeti (satır no, logo, renk, bayi adı) |
 | `GET` | `/api/settings?row=1` | Seçili satırın değerleri |
 | `PUT` | `/api/settings?row=1` | Değişiklikleri kaydeder |
-| `GET` | `/api/health` | Uygulama + veritabanı kontrolü |
+
+Satırlar **1'den** numaralanır (1. satır = `row=1`).
 
 Örnek kayıt isteği:
 
 ```json
 {
   "changes": [
-    { "key": "MinCartCount", "value": "5" },
-    { "key": "ParameterStock", "setBits": "8", "clearBits": "0" }
+    { "key": "SiteStatus", "value": "1" },
+    { "key": "ParameterMenu", "setBits": "0", "clearBits": "1" }
   ]
 }
 ```
 
-Hatalı istekte ayar bazında hata döner:
+Cevap, gerçekten değişen ayarları ve kayıttan sonraki güncel değerleri içerir:
 
 ```json
 {
-  "title": "Bazı ayarlar kaydedilemedi",
-  "status": 400,
-  "errors": { "ProductTableStockType": ["Geçersiz seçenek."] }
+  "changedKeys": ["SiteStatus", "ParameterMenu"],
+  "settings": { "row": 1, "values": { "SiteStatus": "1", "ParameterMenu": "...", "...": "..." } }
 }
 ```
+
+Hatalı istekte ProblemDetails döner:
+
+```json
+{
+  "title": "Geçersiz istek",
+  "status": 400,
+  "detail": "SiteStatus: geçersiz seçenek '5'"
+}
+```
+
+| Durum | Kod |
+|---|---|
+| Kurallardan biri geçilemedi (bilinmeyen ayar, geçersiz seçenek, bilinmeyen bit, çok uzun metin…) | **400** |
+| Olmayan bir satır istendi (`row=10`) | **404** |
+
+## Güvenlik: SQL injection'a karşı iki katman
+
+1. **Değerler her zaman parametreyle gider.** SQL metninde yalnızca `@deger0` gibi yer tutucular bulunur; kullanıcının yazdığı değer SQL metnine hiçbir zaman eklenmez. SQL Server önce komutu çözümler, değeri ancak sonra veri olarak yerleştirir.
+2. **Kolon adları beyaz listeden geçer.** Kolon adları parametre olamadığı için, gelen her `key` önce katalogda aranır. Katalogda olmayan bir ad (örneğin `Logo; DROP TABLE ...`) Repository'ye hiç ulaşmaz; SQL'e her zaman katalogdaki resmi ad yazılır.
 
 ## Bitwise parametreler nasıl kaydediliyor?
 
 `ParameterMenu`, `ParameterProductDetail`, `ParameterStock` gibi kolonlar birden çok açık/kapalı seçeneği tek bir sayıda saklar; her seçenek bir bittir (1, 2, 4, 8 …).
 
-Arayüz değerin tamamını değil, sadece **açılan** (`setBits`) ve **kapatılan** (`clearBits`) bitleri gönderir. API, satırı kilitleyip güncel değeri okur ve şu formülü uygular:
+Arayüz değerin tamamını değil, sadece **açılan** (`setBits`) ve **kapatılan** (`clearBits`) bitleri gönderir. API bu farkı tek bir `UPDATE` cümlesinde, veritabanının o anki değerine uygular:
 
-```
-yeniDeğer = (mevcutDeğer | setBits) & ~clearBits
-
-örnek:  mevcut 3 (0011)  +  setBits 8 (1000)  →  11 (1011)   önceki seçimler korunur
+```sql
+[ParameterMenu] = ([ParameterMenu] | @ac) & ~@kapat
 ```
 
-Böylece ekranda gösterilmeyen bitler ve aynı anda başka bir kullanıcının değiştirdiği bitler bozulmaz.
-`bigint` değerler 2^62'ye kadar çıktığı için API'de string, arayüzde `BigInt` olarak taşınır (JavaScript `number` 2^53'ten büyük tam sayıları doğru tutamaz).
+```
+örnek:  mevcut 5 (0101)  →  setBits 2, clearBits 4  →  3 (0011)
+        dokunulmayan bitler aynen kalır
+```
+
+Hesap veritabanında, mevcut değer üzerinde yapıldığı için ekranda gösterilmeyen bitler ve aynı anda başka bir kullanıcının değiştirdiği bitler bozulmaz. Kayıttan önce gönderilen bitlerin katalogdaki **bilinen bitler** içinde olup olmadığı da kontrol edilir; bilinmeyen bir bite dokunan istek reddedilir.
+
+`bigint` değerler 2^53'ten büyük olabildiği için API'de string, arayüzde `BigInt` olarak taşınır (JavaScript `number` bu büyüklükteki tam sayıları doğru tutamaz).
 
 ## Testler
 
-```powershell
-dotnet test
-```
+Yeni backend yerel veritabanıyla uçtan uca test edildi:
 
-Birim testleri (xUnit): bitwise birleştirme, bilinmeyen bitlerin korunması, kolon tipi sınırları, katalog doğrulaması (her bitwise seçenek tek bit mi, kolona sığıyor mu), değer dönüşümleri.
+| Test | Sonuç |
+|---|---|
+| `GET /api/settings/rows` | 4 satır, logolar ve renkler SSMS sonucuyla aynı |
+| `GET /api/settings?row=2` | 222 kolonun değerleri |
+| `GET /api/settings?row=10` | 404, "10. satır bulunamadı" |
+| `GET /api/settings/catalog` | 12 grup, 93 ayar |
+| Ekrandan kayıt: Site durumu (select) | Kaydedildi; sadece seçilen satır değişti |
+| Ekrandan kayıt: Menü gösterimi (63 bitlik bitwise) | Sadece değişen bit gönderildi (`clearBits: "1"`), diğer 10 seçim korundu |
+
+Testler sırasında bulunup düzeltilen iki hata:
+- `bit` kolonları `"True"`/`"False"` olarak dönüyordu; arayüz ve doğrulama `"1"`/`"0"` bekliyor. Okuma sırasında dönüştürülüyor.
+- Satır numaraları 0'dan başlıyordu, arayüz 1'den bekliyor. 1. satır seçilemiyordu; numaralandırma 1'den başlatıldı.
+
+Ayrıntılar ve ekran görüntüleri Test ve Hata Raporu'ndadır.
 
 ## Proje yapısı
 
 ```
 ├─ backend/
-│  ├─ B2BStore.TechnicalSettings.Api/     Web API
-│  └─ B2BStore.TechnicalSettings.Tests/   xUnit testleri
+│  └─ B2BStore.Settings.Api/
+│     ├─ Controllers/    SettingsController
+│     ├─ Services/       SettingsService (doğrulama + kaydetme akışı)
+│     ├─ Repositories/   SettingsRepository (Dapper + SQL)
+│     ├─ Dtos/           istek ve cevap şekilleri
+│     └─ Catalog/        SettingsCatalog + settings-catalog.json
 ├─ frontend/                              Vue 3 + TypeScript
 │  └─ src/
 │     ├─ api/            API istemcisi ve tipler
-│     ├─ composables/    useSettings – durum, değişiklik takibi, BigInt bitwise
+│     ├─ composables/    useSettings: durum, değişiklik takibi, BigInt bitwise
 │     └─ components/     SettingField, BitmaskField, ChangeSummaryDialog, ToggleSwitch
 ├─ tools/build_catalog.py                 ayar kataloğu üretici + doğrulama
 ├─ SQL-Sorguları/                         analizde kullanılan sorgular
@@ -221,7 +265,8 @@ Birim testleri (xUnit): bitwise birleştirme, bilinmeyen bitlerin korunması, ko
 
 ## Bilinen sınırlamalar
 
-- `DealerSettings` tablosunda birincil anahtar yoktur. Satır, fiziksel konumuna (`%%physloc%%`) göre hedeflenir; güncelleme tam olarak 1 satırı etkilemezse işlem geri alınır. Kalıcı çözüm olarak tabloya anahtar kolon eklenmesi önerilir.
+- `DealerSettings` tablosunda birincil anahtar yoktur. Satırlar fiziksel konumlarına göre sıralanıp numaralanır (`ROW_NUMBER() OVER (ORDER BY %%physloc%%)`); güncelleme tam olarak 1 satırı etkilemezse hata döner. Kalıcı çözüm olarak tabloya bir anahtar kolon eklenmesi önerilir.
+- Tabloda 4 satır var ve hangi satırın hangi siteye ait olduğunu söyleyen bir kolon yok. Logolar ve renkler farklı olduğu için satırlar farklı markalara ait olabilir; bu yüzden ekranda satır seçici var.
 - Görsel alanlar (logo, favicon) dosya adı olarak düzenlenir; dosya yükleme bu modülün kapsamında değildir.
 - Eski ekranda olup veritabanında karşılığı bulunmayan 4 kontrol (Menü Gösterimi 2, Ürün Detay Parametresi 2 – Oturum Kapalı, WhatsApp Sipariş Bildirimi, Favori İkonu Pozisyonu) yeni ekrana alınmamıştır.
 

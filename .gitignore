@@ -1,4 +1,4 @@
-﻿backup/
+backup/
 *.bak
 *.mdf
 *.ldf
@@ -12,8 +12,11 @@ obj/
 *.user
 node_modules/
 dist/
-backend/B2BStore.TechnicalSettings.Api/wwwroot/
+backend/B2BStore.Settings.Api/wwwroot/
 appsettings.Development.json
 _to_delete/
 Analiz/
 PDFler/
+appsettings.Production.json
+PublishProfiles/
+SQL-Sorguları/SQLQuery*.sql

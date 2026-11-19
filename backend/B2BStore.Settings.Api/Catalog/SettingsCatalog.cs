@@ -1,12 +1,11 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace B2BStore.TechnicalSettings.Api.Catalog;
+namespace B2BStore.Settings.Api.Catalog;
 
 /// <summary>
-/// The catalog is the single source of truth: which DealerSettings columns the
-/// screen manages, how they are shown and which values are allowed.
-/// Only columns listed here can ever be read or written (column whitelist).
+/// settings-catalog.json dosyasını okur; her ayar, kategori ve seçenek için bir C# nesnesi üretir.
+/// program calısırken sadece 1 kez calısır addsıngleton seklınde program cs e ekledım
 /// </summary>
 public sealed class SettingsCatalog
 {
