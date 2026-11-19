@@ -10,7 +10,7 @@ Mevcut `DealerSettings` tablosunun yapısı, parametrelerin anlamları ve veri k
 ![.NET](https://img.shields.io/badge/.NET-11-512bd4?logo=dotnet&logoColor=white)
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-2022-cc2927?logo=microsoftsqlserver&logoColor=white)
 
-> 🔗 **Canlı demo:** https://b2b-teknik-ayarlar.runasp.net · 🎬 **Ekran kaydı:** _(eklenecek)_
+> 🔗 **Canlı demo:** https://b2b-teknik-ayarlar.runasp.net · 🎬 **Ekran kaydı:** https://www.youtube.com/watch?v=EMRM-J4qoek
 
 ![Yeni Teknik Ayarlar ekranı](docs/screenshots/yeni-ekran.png)
 
