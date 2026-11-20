@@ -265,6 +265,7 @@ Ayrıntılar ve ekran görüntüleri Test ve Hata Raporu'ndadır.
 
 ## Bilinen sınırlamalar
 
+- API'de kimlik doğrulama yok (demo): adresi bilen herkes ayar değiştirebilir. Gerçek sistemde panelin oturumu ve rolü kontrol edilmelidir.
 - `DealerSettings` tablosunda birincil anahtar yoktur. Satırlar fiziksel konumlarına göre sıralanıp numaralanır (`ROW_NUMBER() OVER (ORDER BY %%physloc%%)`); güncelleme tam olarak 1 satırı etkilemezse hata döner. Kalıcı çözüm olarak tabloya bir anahtar kolon eklenmesi önerilir.
 - Tabloda 4 satır var ve hangi satırın hangi siteye ait olduğunu söyleyen bir kolon yok. Logolar ve renkler farklı olduğu için satırlar farklı markalara ait olabilir; bu yüzden ekranda satır seçici var.
 - Görsel alanlar (logo, favicon) dosya adı olarak düzenlenir; dosya yükleme bu modülün kapsamında değildir.
